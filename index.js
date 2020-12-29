@@ -13,6 +13,8 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const Sequelize = require('sequelize');
 const { prefix, version, embedColor } = require('./config.json');
+// eslint-disable-next-line no-unused-vars
+const pathToFfmpeg = require('ffmpeg-static');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -49,15 +51,6 @@ const Tags = sequelize.define('tags', {
 
 const date = Date.now();
 const time = new Date(date);
-
-const { OpusEncoder } = require('@discordjs/opus');
-
-const encoder = new OpusEncoder(48000, 2);
-
-// eslint-disable-next-line no-undef
-const encoded = encoder.encode(buffer);
-// eslint-disable-next-line no-unused-vars
-const decoded = encoder.decode(encoded);
 
 client.on('ready', async () => {
 	console.log(`ExBo is now up!`);
