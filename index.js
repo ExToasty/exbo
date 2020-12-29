@@ -45,7 +45,7 @@ const Tags = sequelize.define('tags', {
 		defaultValue: 0,
 		allowNull: false,
 	},
-});
+});``
 
 const date = Date.now();
 const time = new Date(date);
@@ -59,23 +59,23 @@ const encoded = encoder.encode(buffer);
 // eslint-disable-next-line no-unused-vars
 const decoded = encoder.decode(encoded);
 
-client.on('ready', () => {
+client.on('ready', async () => {
 	console.log(`ExBo is now up!`);
 	Tags.sync();
 	client.user.setActivity(`ExBo v${version}`, { type: 'PLAYING' });
 });
 
-client.on('guildCreate', guild => {
+client.on('guildCreate', async guild => {
 	console.log(`Added to the following server: ${guild.name}, which has ${guild.memberCount}`);
 });
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', async member => {
 	console.log(`${member.name} has joined the server at ${time}`);
 	const role = member.guild.roles.cache.find(x => x.name === 'ExInUs');
 	member.roles.add(role);
 });
 
-client.on('message', message => {
+client.on('message', async message => {
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
 
 	if (message.content.toLowerCase() === 'thx') {
