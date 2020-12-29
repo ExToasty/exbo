@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -7,9 +9,6 @@ app.get('/', (req, res) => res.send('Uh, why are you here and how did you find t
 app.listen(port, () => console.log(`ExBo is listening at http://localhost:${port}`));
 
 // Discord Bot Starts Now!
-
-"use strict";
-
 const fs = require('fs');
 const Discord = require('discord.js');
 const Sequelize = require('sequelize');
