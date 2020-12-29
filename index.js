@@ -79,8 +79,7 @@ client.on('message', async message => {
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	// eslint-disable-next-line curly
-	if (!message.channel.id === '759841418499194941') return message.channel.send(`Commands \
-  are only allowed in <#759841418499194941>`);
+	if (!message.channel.id === '759841418499194941') return message.channel.send(`Commands 5are only allowed in <#759841418499194941>`);
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
@@ -157,7 +156,8 @@ client.on('message', async message => {
 		}
 	}
 
-	if (command.requireMention && command.requireMention === true && !message.mentions.users.size > 0) {
+	if (command.requireMention && command.requireMention === true
+		&& !message.mentions.users.size > 0) {
 		embed
 			.setColor(embedColor)
 			.setTitle('__Invalid Arguement__')
