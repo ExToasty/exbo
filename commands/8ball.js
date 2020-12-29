@@ -1,20 +1,20 @@
-const Discord = require('discord.js');
-const { prefix, embedColor } = require('discord.js');
+const { prefix } = require('discord.js');
 
 module.exports = {
 	name: '8ball',
 	description: 'Replies with a random response to the question you have',
 	usage: `${prefix}8ball <question>`,
-	aliases: false,
+	// aliases: ['']
 	guildOnly: false,
 	args: true,
 	selfExecute: false,
 	requireMention: false,
 	wip: false,
 	cooldown: 3,
+	deleteMessage: false,
 	permissions: ['SEND_MESSAGES'],
 	category: 'fun',
-	execute(message, args) {
+	execute(message) {
 		const responses = [
 			'It is certain.',
 			'It is decidedly so.',
@@ -35,11 +35,11 @@ module.exports = {
 			'My reply is no.',
 			'My source code says no',
 			'Outlook not so good',
-			'Very doubtful'
-		]
+			'Very doubtful',
+		];
 
 		const response = responses[Math.floor(Math.random() * responses.length)];
 
-		message.channel.send(response)
+		message.channel.send(response);
 	},
-}
+};
