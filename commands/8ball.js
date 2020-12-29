@@ -13,6 +13,7 @@ module.exports = {
 	wip: false,
 	cooldown: 3,
 	permissions: ['SEND_MESSAGES'],
+	category: 'fun',
 	execute(message, args) {
 		const responses = [
 			'It is certain.',
