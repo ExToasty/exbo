@@ -45,7 +45,7 @@ const Tags = sequelize.define('tags', {
 		defaultValue: 0,
 		allowNull: false,
 	},
-});``
+});
 
 const date = Date.now();
 const time = new Date(date);
