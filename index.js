@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const express = require('express');
 const app = express();
@@ -12,7 +12,7 @@ app.listen(port, () => console.log(`ExBo's website is up!`));
 const fs = require('fs');
 const Discord = require('discord.js');
 const Sequelize = require('sequelize');
-const { prefix, token, version, embedColor } = require('./config.json');
+const { prefix, version, embedColor } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -48,7 +48,16 @@ const Tags = sequelize.define('tags', {
 });
 
 const date = Date.now();
-const time = new Date(date)
+const time = new Date(date);
+
+const { OpusEncoder } = require('@discordjs/opus');
+
+const encoder = new OpusEncoder(48000, 2);
+
+// eslint-disable-next-line no-undef
+const encoded = encoder.encode(buffer);
+// eslint-disable-next-line no-unused-vars
+const decoded = encoder.decode(encoded);
 
 client.on('ready', () => {
 	console.log(`ExBo is now up!`);
@@ -58,25 +67,25 @@ client.on('ready', () => {
 
 client.on('guildCreate', guild => {
 	console.log(`Added to the following server: ${guild.name}, which has ${guild.memberCount}`);
-})
+});
 
 client.on('guildMemberAdd', member => {
-	console.log(`${member.name} has joined the server at ${time}`)
-	let role = member.guild.roles.cache.find(x => x.name === 'ExInUs');
+	console.log(`${member.name} has joined the server at ${time}`);
+	const role = member.guild.roles.cache.find(x => x.name === 'ExInUs');
 	member.roles.add(role);
 });
 
 client.on('message', message => {
-	let embed = new Discord.MessageEmbed()
-		.setColor(embedColor)
+	const embed = new Discord.MessageEmbed().setColor(embedColor);
 
 	if (message.content.toLowerCase() === 'thx') {
-		message.channel.send('ur welcome bb')
+		message.channel.send('ur welcome bb');
 	}
 
 	if (message.author.id === '632690114082111519') return message.channel.send('no');
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	// eslint-disable-next-line curly
 	if (!message.channel.id === '759841418499194941') return message.channel.send(`Commands \
   are only allowed in <#759841418499194941>`);
 
@@ -90,7 +99,7 @@ client.on('message', message => {
 		embed
 			.setTitle('__Command or Alias Not Found__')
 			.setDescription(`\`Check if there is a spelling error and retry the command.\``)
-			.setFooter('Run `>help` if you want to get a list of commands.')
+			.setFooter('Run `>help` if you want to get a list of commands.');
 
 		return message.channel.send(embed) && console.error();
 	}
@@ -102,7 +111,7 @@ client.on('message', message => {
 	if (!message.author.id === '332555969169063938' && command.permissions && !message.member.hasPermission(command.permissions)) {
 		embed
 			.setTitle('__Insufficient Permissions__')
-			.setDescription(`\`You don't have the permissions to run this command\``)
+			.setDescription(`\`You don't have the permissions to run this command\``);
 
 		return message.channel.send(embed);
 	}
@@ -110,9 +119,9 @@ client.on('message', message => {
 	if (command.args && command.args === true && !args.length) {
 		embed
 			.setTitle('__Missing Arguments__')
-			.setDescription('\`Arguments are required for this command to function.\`')
+			.setDescription('`Arguments are required for this command to function.`');
 
-		if (command.usage) embed.addField('__Usage__', `\`${command.usage}\``)
+		if (command.usage) embed.addField('__Usage__', `\`${command.usage}\``);
 
 		return message.channel.send(embed);
 	}
@@ -129,7 +138,8 @@ client.on('message', message => {
 		if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			try {
 				command.execute(message, args);
-			} catch (error) {
+			}
+			catch (error) {
 				console.error(error);
 				message.channel.send();
 			}
@@ -138,8 +148,7 @@ client.on('message', message => {
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`You still have ${timeLeft.toFixed(1)} second(s) left until \
-the cooldown expires`);
+			return message.reply(`You still have ${timeLeft.toFixed(1)} second(s) left until the cooldown expires`);
 		}
 	}
 
@@ -158,7 +167,7 @@ the cooldown expires`);
 		embed
 			.setColor(embedColor)
 			.setTitle('__Invalid Arguement__')
-			.setDescription('You need to mention a user.')
+			.setDescription('You need to mention a user.');
 
 
 		if (command.usage) embed.addField('__Usage__', `\`${command.usage}\``);
@@ -168,7 +177,7 @@ the cooldown expires`);
 	if (command.wip && command.wip === true) {
 		embed
 			.setTitle('Command Unavailable')
-			.setDescription('\`This command isn\'t functional at the moment, please be patient.\`')
+			.setDescription('`This command isn\'t functional at the moment, please be patient.`');
 	}
 
 	try {
@@ -178,26 +187,22 @@ the cooldown expires`);
 
 		embed
 			.setTitle('__Error Executing Command__')
-			.setDescription(`An error has caused the command to fail execution. We will look\
-into this momentarily`)
+			.setDescription(`An error has caused the command to fail execution. We will look into this momentarily`);
 
 		command.execute(message, args);
 
-		console.log(`${message.member.user.tag} has executed '${prefix}${command.name}' \
-with the following arguments: '${args.join(' ')}' at ${time} in ${message.guild.name}`);
-	} catch (error) {
+		console.log(`${message.member.user.tag} has executed '${prefix}${command.name}' with the following arguments: '${args.join(' ')}' at ${time} in ${message.guild.name}`);
+	}
+	catch (error) {
 		embed
 			.setTitle('__Error Executing Command__')
-			.setDescription(`\`An error has caused the command to fail execution. We will look into \
-this momentarily\``)
+			.setDescription(`\`An error has caused the command to fail execution. We will look into this momentarily\``);
 
 		console.error(error);
 		embed.addFields(
 			{ name: '__Error Message__', value: `\`${error}\`` },
-			{
-				name: '__Troubleshooting__', value: '\`Try reloading the command. \
-If that doesn\'t work, report the issue in <!#759847171930849282>\`' }
-		)
+			{ name: '__Troubleshooting__', value: '`Try reloading the command. If that doesn\'t work, report the issue in <!#759847171930849282>`' },
+		);
 
 		message.channel.send(embed);
 	}
