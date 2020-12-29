@@ -96,11 +96,11 @@ client.on('message', message => {
 		return message.channel.send(embed) && console.error();
 	}
 
-	if (command.guildOnly && message.channel.type === 'dm') {
+	if (command.guildOnly && command.guildOnly === true && message.channel.type === 'dm') {
 		return message.reply('That command is not executable in DMs');
 	}
 
-	if (message.author.id != '332555969169063938' && command.permissions && !message.member.hasPermission(command.permissions)) {
+	if (!message.author.id === '332555969169063938' && command.permissions && !message.member.hasPermission(command.permissions)) {
 		embed
 			.setTitle('__Insufficient Permissions__')
 			.setDescription(`\`You don't have the permissions to run this command\``)
@@ -108,7 +108,7 @@ client.on('message', message => {
 		return message.channel.send(embed);
 	}
 
-	if (command.args && !args.length) {
+	if (command.args && command.args === true && !args.length) {
 		embed
 			.setTitle('__Missing Arguments__')
 			.setDescription('\`Arguments are required for this command to function.\`')
@@ -147,7 +147,7 @@ the cooldown expires`);
 	timestamps.set(message.author.id, now);
 	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-	if (command.selfExecute) {
+	if (command.selfExecute && command.selfExecute === true) {
 		if (command.selfExecute === false) {
 			embed.setDescription('You can\'t run this command on yourself');
 
@@ -155,7 +155,7 @@ the cooldown expires`);
 		}
 	}
 
-	if (command.requireMention && !message.mentions.users.size > 0) {
+	if (command.requireMention && command.requireMention === true && !message.mentions.users.size > 0) {
 		embed
 			.setColor(embedColor)
 			.setTitle('__Invalid Arguement__')

@@ -13,7 +13,7 @@ module.exports = {
   cooldown: 5,
   category: 'fun',
   execute(message, args) {
-    let percentage = Math.floor(Math.random() * 100) + 1;
+    const percentage = Math.floor(Math.random() * 100) + 1;
     const responses = ['homosexual', 'heterosexual', 'asexual', 'bisexual'];
     const sexuality = responses[Math.floor(Math.random() * responses.length)];
     let embed = new Discord.MessageEmbed()
