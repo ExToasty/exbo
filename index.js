@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -88,7 +86,7 @@ client.on('message', async message => {
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	const user = getUserFromMention(args[0]);
+	5const user = getUserFromMention(args[0]);
 	console.log(user);
 
 	if (!command) {
