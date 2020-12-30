@@ -32,7 +32,7 @@ module.exports = {
 				.setDescription('`You need to mention a user.`');
 			return message.channel.send(embed);
 		}
-		embed.setDescription(`**\`${user.tag}\`** \`is ${percentage}% ${sexuality}\``);
+		embed.setDescription(`__**\`${user.tag}\`**__\` is ${percentage}% ${sexuality}\``);
 		return message.channel.send(embed);
 	},
 };
