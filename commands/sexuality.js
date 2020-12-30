@@ -12,7 +12,7 @@ module.exports = {
 	usage: `${prefix}sexuality [mention]`,
 	cooldown: 5,
 	category: 'fun',
-	execute(message, args, user) {
+	execute(message, args, getUserFromMention) {
 		const percentage = Math.floor(Math.random() * 100) + 1;
 		const responses = ['homosexual', 'heterosexual', 'asexual', 'bisexual'];
 		const sexuality = responses[Math.floor(Math.random() * responses.length)];
@@ -25,7 +25,8 @@ module.exports = {
 				.setDescription(`You are ${percentage}% ${sexuality}`);
 			return message.channel.send(embed);
 		}
-		else if (!user) {
+		const user = getUserFromMention(args[0]);
+		if (!user) {
 			embed
 				.setTitle('__Invalid Arguement__')
 				.setDescription('`You need to mention a user.`');
