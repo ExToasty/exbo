@@ -29,7 +29,7 @@ module.exports = {
 			return await message.guild.members.ban(member)
 				.then(message.channel.send(embed));
 		}
-		embed.setDescription(`:white_check_mark: ${member} has been banned for ${reason}`);
+		embed.setDescription(`:white_check_mark: ${member.tag} has been banned for ${reason}`);
 		await message.guild.members.ban(member, { reason: reason })
 			.then(message.channel.send(embed))
 			.catch();
