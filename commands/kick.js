@@ -20,7 +20,7 @@ module.exports = {
 			.setColor(embedColor)
 			.setTitle('Member Succesfully Kicked');
 		const member = message.mentions.members.first();
-		const reason = args.slice(member.length).join(' ');
+		const reason = args.slice(member.length).split(/ +/);
 
 		if (!args.slice(member.length).length) {
 			embed.setDescription(`${member} has been kicked`);
