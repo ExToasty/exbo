@@ -161,7 +161,6 @@ client.on('message', async message => {
 			.setTitle('__Invalid Arguement__')
 			.setDescription('You need to mention a user.');
 
-
 		if (command.usage) embed.addField('__Usage__', `\`${command.usage}\``);
 		return message.channel.send(embed);
 	}
