@@ -69,7 +69,6 @@ client.on('guildMemberAdd', async member => {
 });
 
 client.on('message', async message => {
-	const user = getUserFromMention(args[0]);
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
 	const getUserFromMention = (mention) => {
 		const matches = mention.match(/^<@!?(\d+)>$/);
@@ -77,6 +76,7 @@ client.on('message', async message => {
 		const id = matches[1];
 		return client.users.cache.get(id);
 	};
+	const user = getUserFromMention(args[0]);
 
 	if (message.content.toLowerCase() === 'thx') return message.channel.send('ur welcome bb');
 	if (message.author.id === '632690114082111519') return message.channel.send('no');
