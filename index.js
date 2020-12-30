@@ -59,6 +59,9 @@ const getUserFromMention = (mention) => {
 	return client.users.cache.get(id);
 };
 
+const user = getUserFromMention(args[0]);
+console.log(user);
+
 client.on('ready', async () => {
 	console.log(`ExBo is now up!`);
 	Tags.sync();
@@ -88,8 +91,8 @@ client.on('message', async message => {
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	const user = getUserFromMention(args[0]);
-	console.log(user);
+	// const user = getUserFromMention(args[0]);
+	// console.log(user);
 
 	if (!command) {
 		embed
