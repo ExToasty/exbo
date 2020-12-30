@@ -25,7 +25,13 @@ module.exports = {
 			.setTitle('Ban Succesful')
 			.setDescription(`:white_check_mark: ${user} has been banned`);
 
-		await message.guild.members.ban(user, { reason: reason });
-		message.channel.send(embed);
+		if (!args.slice(0).length()) {
+			return await message.guild.nmember.ban(user)
+				.then(message.channel.send(embed));
+		}
+		embed.setDescription(`:white_check_mark: ${user} has been banned for ${reason}`);
+		await message.guild.members.ban(user, { reason: reason })
+			.then(message.channel.send(embed))
+			.catch();
 	},
 };
