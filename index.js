@@ -52,6 +52,13 @@ const Tags = sequelize.define('tags', {
 const date = Date.now();
 const time = new Date(date);
 
+const getUserFromMention = (mention) => {
+	const matches = mention.match(/^<@!?(\d+)>$/);
+	if (!matches) return;
+	const id = matches[1];
+	return client.users.cache.get(id);
+};
+
 client.on('ready', async () => {
 	console.log(`ExBo is now up!`);
 	Tags.sync();
@@ -81,12 +88,6 @@ client.on('message', async message => {
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	const getUserFromMention = (mention) => {
-		const matches = mention.match(/^<@!?(\d+)>$/);
-		if (!matches) return;
-		const id = matches[1];
-		return client.users.cache.get(id);
-	};
 	const user = getUserFromMention(args[0]);
 
 	if (!command) {
