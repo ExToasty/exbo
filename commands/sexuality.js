@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const Discord = require('discord.js');
 const { prefix, embedColor } = require('../config.json');
@@ -12,7 +12,7 @@ module.exports = {
 	usage: `${prefix}sexuality [mention]`,
 	cooldown: 5,
 	category: 'fun',
-	execute(message, args) {
+	execute(message, args, user) {
 		const percentage = Math.floor(Math.random() * 100) + 1;
 		const responses = ['homosexual', 'heterosexual', 'asexual', 'bisexual'];
 		const sexuality = responses[Math.floor(Math.random() * responses.length)];
@@ -25,14 +25,13 @@ module.exports = {
 				.setDescription(`You are ${percentage}% ${sexuality}`);
 			return message.channel.send(embed);
 		}
-		else if (!message.mentions.members.size === 0) {
+		else if (!user) {
 			embed
 				.setTitle('__Invalid Arguement__')
 				.setDescription('You need to mention a user.');
-
 			return message.channel.send(embed);
 		}
-		embed.setDescription(`${args[0]} is ${percentage}% ${sexuality}`);
-		message.channel.send(embed);
+		embed.setDescription(`${user.tag} is ${percentage}% ${sexuality}`);
+		return message.channel.send(embed);
 	},
 };
