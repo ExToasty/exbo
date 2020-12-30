@@ -18,19 +18,19 @@ module.exports = {
 	permissions: 'ADMINISTRATOR',
 	category: 'moderation',
 	async execute(message, args) {
-		const user = message.mentions.users.first();
+		const member = message.mentions.members.first();
 		const reason = args.slice(0).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('Ban Succesful')
-			.setDescription(`:white_check_mark: ${user} has been banned`);
+			.setDescription(`:white_check_mark: ${member} has been banned`);
 
 		if (!args.slice(0).length()) {
-			return await message.guild.nmember.ban(user)
+			return await message.guild.nmember.ban(member)
 				.then(message.channel.send(embed));
 		}
-		embed.setDescription(`:white_check_mark: ${user} has been banned for ${reason}`);
-		await message.guild.members.ban(user, { reason: reason })
+		embed.setDescription(`:white_check_mark: ${member} has been banned for ${reason}`);
+		await message.guild.members.ban(member, { reason: reason })
 			.then(message.channel.send(embed))
 			.catch();
 	},
