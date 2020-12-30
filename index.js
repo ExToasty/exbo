@@ -69,17 +69,19 @@ client.on('guildMemberAdd', async member => {
 });
 
 client.on('message', async message => {
+	const user = getUserFromMention(args[0]);
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
+	const getUserFromMention = (mention) => {
+		const matches = mention.match(/^<@!?(\d+)>$/);
+		if (!matches) return;
+		const id = matches[1];
+		return client.users.cache.get(id);
+	};
 
-	if (message.content.toLowerCase() === 'thx') {
-		message.channel.send('ur welcome bb');
-	}
-
+	if (message.content.toLowerCase() === 'thx') return message.channel.send('ur welcome bb');
 	if (message.author.id === '632690114082111519') return message.channel.send('no');
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	if (!message.channel.id === '759841418499194941') return message.channel.send(`Commands 5are only allowed in <#759841418499194941>`);
-
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
@@ -155,9 +157,8 @@ client.on('message', async message => {
 		}
 	}
 
-	if (command.requireMention && command.requireMention === true && !message.mentions.users.first()) {
+	if (command.requireMention && command.requireMention === true && !user) {
 		embed
-			.setColor(embedColor)
 			.setTitle('__Invalid Arguement__')
 			.setDescription('You need to mention a user.');
 
