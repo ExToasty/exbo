@@ -19,7 +19,7 @@ module.exports = {
 			'It is certain.',
 			'It is decidedly so.',
 			'Without a doubt',
-			'Yes = Definitely.',
+			'Yes, Definitely.',
 			'You may rely on it.',
 			'As I see it, yes',
 			'Most likely.',
