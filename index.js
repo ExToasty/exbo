@@ -86,7 +86,7 @@ client.on('message', async message => {
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	5const user = getUserFromMention(args[0]);
+	const user = getUserFromMention(args[0]);
 	console.log(user);
 
 	if (!command) {
