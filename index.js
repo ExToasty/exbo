@@ -70,13 +70,6 @@ client.on('guildMemberAdd', async member => {
 
 client.on('message', async message => {
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
-	const getUserFromMention = (mention) => {
-		const matches = mention.match(/^<@!?(\d+)>$/);
-		if (!matches) return;
-		const id = matches[1];
-		return client.users.cache.get(id);
-	};
-	const user = getUserFromMention(args[0]);
 
 	if (message.content.toLowerCase() === 'thx') return message.channel.send('ur welcome bb');
 	if (message.author.id === '632690114082111519') return message.channel.send('no');
@@ -87,6 +80,14 @@ client.on('message', async message => {
 
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+	const getUserFromMention = (mention) => {
+		const matches = mention.match(/^<@!?(\d+)>$/);
+		if (!matches) return;
+		const id = matches[1];
+		return client.users.cache.get(id);
+	};
+	const user = getUserFromMention(args[0]);
 
 	if (!command) {
 		embed
