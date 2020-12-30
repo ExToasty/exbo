@@ -28,7 +28,7 @@ module.exports = {
 		else if (!user) {
 			embed
 				.setTitle('__Invalid Arguement__')
-				.setDescription('You need to mention a user.');
+				.setDescription('`You need to mention a user.`');
 			return message.channel.send(embed);
 		}
 		embed.setDescription(`${user.tag} is ${percentage}% ${sexuality}`);
