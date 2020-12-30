@@ -89,6 +89,7 @@ client.on('message', async message => {
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 	const user = getUserFromMention(args[0]);
+	console.log(user);
 
 	if (!command) {
 		embed
