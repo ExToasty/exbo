@@ -50,13 +50,6 @@ const Tags = sequelize.define('tags', {
 const date = Date.now();
 const time = new Date(date);
 
-const getUserFromMention = (mention) => {
-	const matches = mention.match(/^<@!?(\d+)>$/);
-	if (!matches) return;
-	const id = matches[1];
-	return client.users.cache.get(id);
-};
-
 client.on('ready', async () => {
 	console.log(`ExBo is now up!`);
 	Tags.sync();
@@ -74,6 +67,13 @@ client.on('guildMemberAdd', async member => {
 });
 
 client.on('message', async message => {
+	const getUserFromMention = (mention) => {
+		const matches = mention.match(/^<@!?(\d+)>$/);
+		if (!matches) return;
+		const id = matches[1];
+		return client.users.cache.get(id);
+	};
+
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
 
 	if (message.content.toLowerCase() === 'thx') return message.channel.send('ur welcome bb');
