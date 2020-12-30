@@ -25,7 +25,7 @@ module.exports = {
 			.setTitle('Ban Succesful')
 			.setDescription(`:white_check_mark: ${member} has been banned`);
 
-		if (!args.slice(1).length()) {
+		if (!args.slice(1).length) {
 			return await message.guild.members.ban(member)
 				.then(message.channel.send(embed));
 		}
