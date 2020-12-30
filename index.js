@@ -78,7 +78,6 @@ client.on('message', async message => {
 	if (message.author.id === '632690114082111519') return message.channel.send('no');
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	// eslint-disable-next-line curly
 	if (!message.channel.id === '759841418499194941') return message.channel.send(`Commands 5are only allowed in <#759841418499194941>`);
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
