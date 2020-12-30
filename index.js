@@ -156,8 +156,7 @@ client.on('message', async message => {
 		}
 	}
 
-	if (command.requireMention && command.requireMention === true
-		&& !message.mentions.users.size > 0) {
+	if (command.requireMention && command.requireMention === true && !message.mentions.users.first()) {
 		embed
 			.setColor(embedColor)
 			.setTitle('__Invalid Arguement__')
