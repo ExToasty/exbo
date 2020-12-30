@@ -12,25 +12,26 @@ module.exports = {
 	deleteMessage: true,
 	category: 'moderation',
 	wip: true,
-	execute(message, args) {
+	execute(message) {
 		const member = message.mentions.members.first();
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Unmute Succesful__')
-			.setDescription(`\`${member} has been unmuted.\``)
+			.setDescription(`\`${member} has been unmuted.\``);
 
 		if ((member.roles.cache.some(role => role.name === 'muted'))) {
 			return member.role.remove()
 				.catch()
 				.then(
-					message.channel.send(embed)
-				)
-		} else {
+					message.channel.send(embed),
+				);
+		}
+		else {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
-				.setDescription(`\`${member.toString()} is not muted\``)
+				.setDescription(`\`${member.toString()} is not muted\``);
 
 			return message.channel.send(embed);
 		}
 	},
-}
+};
