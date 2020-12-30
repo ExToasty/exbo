@@ -22,7 +22,7 @@ module.exports = {
 		const member = message.mentions.members.first();
 		const reason = args.slice(0).join(' ');
 
-		if (!args[0].slice().length()) {
+		if (!args[0].shift().length()) {
 			embed.setDescription(`${member} has been kicked`);
 			return member.kick().then(message.channel.send(embed));
 		}
