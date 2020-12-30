@@ -23,10 +23,10 @@ module.exports = {
 		const reason = args.slice(1).join(' ');
 
 		if (!args.slice(1).length) {
-			embed.setDescription(`${member} has been kicked`);
+			embed.setDescription(`${member.tag} has been kicked`);
 			return member.kick().then(message.channel.send(embed));
 		}
-		embed.setDescription(`${member} member has been kicked for ${reason}`);
+		embed.setDescription(`${member.tag} member has been kicked for ${reason}`);
 		return member.kick([reason]).then(message.channel.send(embed));
 	},
 };

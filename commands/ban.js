@@ -23,10 +23,10 @@ module.exports = {
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('Ban Succesful')
-			.setDescription(`:white_check_mark: ${member} has been banned`);
+			.setDescription(`:white_check_mark: ${member.tag} has been banned`);
 
 		if (!args.slice(1).length) {
-			return await message.guild.members.ban(member)
+			return await message.guild.members.ban(member.tag)
 				.then(message.channel.send(embed));
 		}
 		embed.setDescription(`:white_check_mark: ${member.tag} has been banned for ${reason}`);
