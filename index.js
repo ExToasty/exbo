@@ -79,9 +79,6 @@ client.on('message', async message => {
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	const user = getUserFromMention(args[0]);
-	console.log(user);
-
 	if (!command) {
 		embed
 			.setTitle('__Command or Alias Not Found__')
