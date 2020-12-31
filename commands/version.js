@@ -11,8 +11,8 @@ module.exports = {
 	execute(message, args) {
 		message.delete({ timout: 1000 });
 		const embed = new Discord.MessageEmbed(args)
-			.setTitle('Version')
-			.setDescription(`${version}`)
+			.setTitle('__Version__')
+			.setDescription(`\`${version}\``)
 			.setColor(embedColor);
 
 		message.channel.send(embed);
