@@ -12,7 +12,7 @@ module.exports = {
 	args: true,
 	selfExecute: false,
 	requireMention: true,
-	wip: true,
+	wip: false,
 	cooldown: 3,
 	deleteMessage: true,
 	permissions: 'ADMINISTRATOR',
