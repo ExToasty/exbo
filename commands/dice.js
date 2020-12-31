@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix, embedColor } = require('');
+const { prefix, embedColor } = require('../config.json');
 
 module.exports = {
 	name: 'diceroll',
