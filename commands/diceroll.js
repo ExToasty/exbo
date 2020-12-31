@@ -21,7 +21,7 @@ module.exports = {
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Dice Roll Results__')
-			.setDescription(`\`You landed on __**${roll}**__ \``);
+			.setDescription(`\`You landed on \`__**\`${roll}\`**__\`.\``);
 		return message.channel.send(embed);
 	},
 };
