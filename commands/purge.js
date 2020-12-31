@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../config.json');
+const { prefix, embedColor } = require('../config.json');
 
 module.exports = {
 	name: 'purge',
@@ -12,7 +12,7 @@ module.exports = {
 	execute(message, args) {
 		const amount = parseInt(args[0]) + 1;
 		const embed = new Discord.MessageEmbed()
-			.setColor('#0caecf')
+			.setColor(embedColor)
 			.setTitle('Invalid Value')
 			.setDescription('You must choose an integer that is between 1 and 99');
 
