@@ -167,7 +167,7 @@ client.on('message', async message => {
 			.setDescription('`This command isn\'t functional at the moment, please be patient.`');
 	}
 
-	try {00
+	try {
 		embed
 			.setTitle('__Error Executing Command__')
 			.setDescription(`An error has caused the command to fail execution. We will look into this momentarily`);
