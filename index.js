@@ -163,7 +163,7 @@ client.on('message', async message => {
 
 	if (command.wip && command.wip === true) {
 		embed
-			.setTitle('Command Unavailable')
+			.setTitle('__Command Unavailable__')
 			.setDescription('`This command isn\'t functional at the moment, please be patient.`');
 	}
 
@@ -174,7 +174,7 @@ client.on('message', async message => {
 
 		command.execute(message, args);
 
-		console.log(`${message.member.user.tag} has executed '${prefix}${command.name}' with the following arguments: '${args.join(' ')}' at ${time} in ${message.guild.name}`);
+		console.log(`${message.author.user.tag} has executed '${prefix}${command.name}' with the following arguments: '${args.join(' ')}' at ${time} in ${message.guild.name}`);
 	}
 	catch (error) {
 		embed
