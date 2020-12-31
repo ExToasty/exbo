@@ -7,7 +7,7 @@ module.exports = {
 	usage: `${prefix}diceroll <positive integer>`,
 	aliases: ['roll', 'rolldice', 'dice', 'die'],
 	guildOnly: false,
-	args: true,
+	args: false,
 	selfExecute: false,
 	requireMention: false,
 	wip: false,
