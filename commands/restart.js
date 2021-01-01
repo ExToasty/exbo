@@ -22,7 +22,7 @@ module.exports = {
 		if (message.author.id === '332555969169063938') {
 			embed
 				.setTitle('__Restart Succesful__')
-				.setDescription(`The bot has been restarted by ${message.author.user.tag}`);
+				.setDescription(`The bot has been restarted by ${message.author.tag}`);
 
 			process.exit().then(message.channel.send(embed));
 		}
