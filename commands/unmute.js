@@ -19,7 +19,7 @@ module.exports = {
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor);
 
-		if (!mutedRole) {
+		if (!member.roles.cache.some(role => role.name === 'muted')) {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
 				.setDescription(`__**\`${member.tag}\`**__\` is not muted\``);
@@ -28,7 +28,7 @@ module.exports = {
 		}
 		embed
 			.setTitle('__Unmute Succesful__')
-			.setDescription(`__**\`${member.tag}\`**__\` is now unmuted\``);
+			.setDescription(`__**\`${member}\`**__\` is now unmuted\``);
 
 		return message.member.removeRole(mutedRole)
 			.catch()
