@@ -13,14 +13,14 @@ module.exports = {
 	category: 'moderation',
 	wip: true,
 	execute(message) {
-		const mutedRole = message.guild.roles.find(role => role.name === 'muted');
+		const mutedRole = message.member.roles.find(role => role.name === 'muted');
 		const member = message.mentions.members.first();
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Unmute Succesful__')
 			.setDescription(`\`${member} has been unmuted.\``);
 
-		if (member.roles.cache.some(role => role.name === 'muted')) {
+		if (mutedRole) {
 			return message.member.removeRole(mutedRole)
 				.catch()
 				.then(message.channel.send(embed));
