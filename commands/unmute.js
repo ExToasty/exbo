@@ -17,21 +17,21 @@ module.exports = {
 		const mutedRole = message.member.roles.cache.some(role => role.name === 'muted');
 		const member = message.mentions.members.first();
 		const embed = new Discord.MessageEmbed()
-			.setColor(embedColor)
-			.setTitle('__Unmute Succesful__')
-			.setDescription(`\`${member} has been unmuted.\``);
+			.setColor(embedColor);
 
-		if (mutedRole) {
-			return message.member.removeRole(mutedRole)
-				.catch()
-				.then(message.channel.send(embed));
-		}
-		else {
+		if (!mutedRole) {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
-				.setDescription(`\`${member.toString()} is not muted\``);
+				.setDescription(`__**\`${member.tag}\`**__\` is not muted\``);
 
 			return message.channel.send(embed);
 		}
+		embed
+			.setTitle('__Unmute Succesful__')
+			.setDescription(`__**\`${member.tag}\`**__\` is now unmuted\``);
+
+		return message.member.removeRole(mutedRole)
+			.catch()
+			.then(message.channel.send(embed));
 	},
 };
