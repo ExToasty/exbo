@@ -32,7 +32,6 @@ module.exports = {
 			});
 		}
 
-		member.roles.add(role);
-		message.channel.send(embed);
+		member.roles.add(role).then(message.channel.send(embed));
 	},
 };
