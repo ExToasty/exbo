@@ -9,6 +9,7 @@ module.exports = {
 	guildOnly: true,
 	selfExecute: true,
 	args: true,
+	requireMention: true,
 	deleteMessage: true,
 	category: 'moderation',
 	wip: true,
