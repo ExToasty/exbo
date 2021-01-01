@@ -174,7 +174,7 @@ client.on('message', async message => {
 
 		command.execute(message, args);
 
-		console.log(`${message.author.user.tag} has executed '${prefix}${command.name}' with the following arguments: '${args.join(' ')}' at ${time} in ${message.guild.name}`);
+		console.log(`${message.member.user.tag} has executed '${prefix}${command.name}' with the following arguments: '${args.join(' ')}' at ${time} in ${message.guild.name}`);
 	}
 	catch (error) {
 		embed
