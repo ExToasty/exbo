@@ -3,7 +3,7 @@ const { prefix, embedColor } = require('../config.json');
 
 module.exports = {
 	name: 'kill',
-	description: 'Restarts the bot',
+	description: 'Kills the bot',
 	usage: `${prefix}restart`,
 	aliases: ['end', 'exit', 'destroy'],
 	guildOnly: false,
