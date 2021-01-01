@@ -13,7 +13,7 @@ module.exports = {
 	category: 'moderation',
 	wip: true,
 	execute(message) {
-		const role = message.member.foles.find(role2 => role2.name === 'muted');
+		const role = message.member.roles.find(role2 => role2.name === 'muted');
 		const member = message.mentions.members.first();
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
