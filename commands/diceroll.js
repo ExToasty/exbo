@@ -17,15 +17,12 @@ module.exports = {
 	category: 'fun',
 	execute(message, args) {
 		let sides = parseInt(args[0], 10);
+		if (!args.length) sides = 6;
 		const roll = Math.floor(Math.random() * sides) + 1;
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Dice Roll Results__')
 			.setDescription(`\`You landed on \`__**\`${roll}\`**__\`.\``);
-
-		if (!args.length) {
-			sides = 6;
-		}
 
 		return message.channel.send(embed);
 	},
