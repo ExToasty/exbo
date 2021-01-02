@@ -15,7 +15,7 @@ module.exports = {
 	wip: true,
 	execute(message, args) {
 		const reason = args.slice(1).join(' ');
-		const mutedRole = message.member.roles.cache.find(role => role.name === 'muted');
+		const mutedRole = message.guild.roles.cache.find(role => role.name === 'muted');
 		const target = message.mentions.members.first();
 		const member = message.guild.members.cache.get(target.id);
 		const embed = new Discord.MessageEmbed().setColor(embedColor);
@@ -33,7 +33,7 @@ module.exports = {
 				.setTitle('__Unmute Succesful__')
 				.setDescription(`__**\`${target}\`**__\` has been unmuted.\``);
 
-			return member.roles.remove(mutedRole.id)
+			return member.roles.remove(mutedRole)
 				.then(message.channel.send(embed))
 				.catch();
 		}
@@ -42,7 +42,7 @@ module.exports = {
 			.setTitle('Unmute Succesful')
 			.setDescription(`__**\`${target}\`**__\` has been unmuted for ${reason}\``);
 
-		return member.roles.remove(mutedRole.id, [reason])
+		return member.roles.remove(mutedRole, [reason])
 			.then(message.channel.send(embed))
 			.catch();
 
