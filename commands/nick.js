@@ -24,10 +24,10 @@ module.exports = {
 
 		if (!member) {
 			embed
-				.setDescription(`\`${message.author.user.tag} changed their nickname to "${nick}"\``);
+				.setDescription(`\`${message.author} changed their nickname to "${nick}"\``);
 			return member.setNickname(nick).then(message.channel.send(embed));
 		}
-		embed.setDescription(`\`${message.author.user.tag} changed ${member.user.tag}'s nickname to ${args[1]}.\``);
+		embed.setDescription(`\`${message.author} changed ${member}'s nickname to ${args[1]}.\``);
 		return member.setNickname(nick).then(message.channel.send(embed));
 	},
 };
