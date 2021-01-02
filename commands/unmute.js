@@ -32,17 +32,13 @@ module.exports = {
 				.setTitle('__Unmute Succesful__')
 				.setDescription(`__**\`${target}\`**__\` has been unmuted.\``);
 
-			return target.roles.remove(mutedRole)
-				.then(message.channel.send(embed))
-				.catch();
+			return target.roles.remove(mutedRole).then(message.channel.send(embed));
 		}
 
 		embed
 			.setTitle('Unmute Succesful')
 			.setDescription(`__**\`${target}\`**__\` has been unmuted for ${reason}\``);
 
-		return target.roles.remove(mutedRole, [reason])
-			.then(message.channel.send(embed))
-			.catch();
+		return target.roles.remove(mutedRole, [reason]).then(message.channel.send(embed));
 	},
 };
