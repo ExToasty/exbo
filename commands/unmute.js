@@ -32,7 +32,7 @@ module.exports = {
 				.setTitle('__Unmute Succesful__')
 				.setDescription(`__**\`${member}\`**__\` has been unmuted.\``);
 
-			return message.guild.member.remove(mutedRole)
+			return message.member.remove(mutedRole)
 				.then(message.channel.send(embed))
 				.catch();
 		}
@@ -40,7 +40,7 @@ module.exports = {
 			.setTitle('Unmute Succesful')
 			.setDescription(`__**\`${member}\`**__\` has been unmuted for ${reason}\``);
 
-		return message.guild.member.remove(mutedRole, [reason])
+		return message.member.remove(mutedRole, [reason])
 			.then(message.channel.send(embed))
 			.catch();
 	},
