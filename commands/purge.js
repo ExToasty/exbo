@@ -12,11 +12,11 @@ module.exports = {
 	requireMention: false,
 	wip: false,
 	cooldown: 3,
-	deleteMessage: true,
+	deleteMessage: false,
 	permissions: ['MANAGE_MESSAGES'],
 	category: 'moderation',
 	execute(message, args) {
-		const amount = parseInt(args[0]);
+		const amount = parseInt(args[0]) + 1;
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('Invalid Value')
