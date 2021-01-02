@@ -23,26 +23,30 @@ module.exports = {
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Succesfully Unbanned User__');
+		try {
+			if (!bannedUser) {
+				embed
+					.setTitle('__Ban Unsuccesful__')
+					.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
 
-		if (!bannedUser) {
-			embed
-				.setTitle('__Ban Unsuccesful__')
-				.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
+				return message.channel.send(embed).catch();
+			}
 
-			return message.channel.send(embed).catch();
-		}
+			if (!reason) {
+				embed.setDescription(`__**\`${user}\`**__\` has been unbanned\``);
 
-		if (!reason) {
-			embed.setDescription(`__**\`${user}\`**__\` has been unbanned\``);
+				return message.guild.members.unban(id)
+					.then(message.channel.send(embed))
+					.catch();
+			}
+			embed.setDescription(`__**\`${user}\`**__\` has been unbanned for ${reason}\``);
 
-			return message.guild.members.unban(id)
+			return message.guild.members.unban(id, [reason])
 				.then(message.channel.send(embed))
 				.catch();
 		}
-		embed.setDescription(`__**\`${user}\`**__\` has been unbanned for ${reason}\``);
-
-		return message.guild.members.unban(id, [reason])
-			.then(message.channel.send(embed))
-			.catch();
+		catch (err) {
+			console.error(err);
+		}
 	},
 };
