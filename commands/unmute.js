@@ -15,10 +15,11 @@ module.exports = {
 	wip: true,
 	execute(message, args) {
 		const reason = args.slice(1).join(' ');
-		const mutedRole = message.member.roles.cache.some(role => role.name === 'muted');
+		const mutedRole = message.member.roles.cache.find(role => role.name === 'muted');
 		const target = message.mentions.members.first();
 		const member = message.guild.members.cache.get(target.id);
 		const embed = new Discord.MessageEmbed().setColor(embedColor);
+
 		if (!member.roles.cache.some(role => role.name === 'muted')) {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
@@ -26,6 +27,7 @@ module.exports = {
 
 			return message.channel.send(embed);
 		}
+
 		if (!reason) {
 			embed
 				.setTitle('__Unmute Succesful__')
@@ -35,6 +37,7 @@ module.exports = {
 				.then(message.channel.send(embed))
 				.catch();
 		}
+
 		embed
 			.setTitle('Unmute Succesful')
 			.setDescription(`__**\`${target}\`**__\` has been unmuted for ${reason}\``);
