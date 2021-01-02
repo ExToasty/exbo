@@ -15,8 +15,8 @@ module.exports = {
 	cooldown: 5,
 	permissions: ['ADMIN'],
 	category: 'moderation',
-	execute(message, args, user) {
-		const banList = message.guild.fetchBans();
+	async execute(message, args, user) {
+		const banList = await message.guild.fetchBans();
 		const bannedUser = banList.find(findUser => findUser.id === 'id');
 		const id = args[0];
 		const reason = args.slice(1).join(' ');
