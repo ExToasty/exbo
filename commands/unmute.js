@@ -4,7 +4,7 @@ const { prefix, embedColor } = require('../config.json');
 module.exports = {
 	name: 'unmute',
 	description: 'If the specified user is muted, the it unmutes them.',
-	usage: `\`${prefix}unmute <member> [reason]\``,
+	usage: `\`${prefix}unmute <user> [reason]\``,
 	permissions: ['MANAGE_ROLES'],
 	guildOnly: true,
 	selfExecute: true,
@@ -13,34 +13,34 @@ module.exports = {
 	deleteMessage: true,
 	category: 'moderation',
 	wip: true,
-	execute(message, args) {
+	execute(message, args, user) {
 		const reason = args.slice(1).join(' ');
-		const mutedRole = message.member.roles.cache.some(role => role.name === 'muted');
-		const member = message.mentions.members.first();
+		const mutedRole = message.user.roles.cache.some(role => role.name === 'muted');
+		// const user = message.mentions.users.first();
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor);
 
-		if (!member.roles.cache.some(role => role.name === 'muted')) {
+		if (!user.roles.cache.some(role => role.name === 'muted')) {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
-				.setDescription(`__**\`${member}\`**__\` is not muted\``);
+				.setDescription(`__**\`${user}\`**__\` is not muted\``);
 
 			return message.channel.send(embed);
 		}
 		if (!reason) {
 			embed
 				.setTitle('__Unmute Succesful__')
-				.setDescription(`__**\`${member}\`**__\` has been unmuted.\``);
+				.setDescription(`__**\`${user}\`**__\` has been unmuted.\``);
 
-			return message.member.remove(mutedRole)
+			return user.remove(mutedRole)
 				.then(message.channel.send(embed))
 				.catch();
 		}
 		embed
 			.setTitle('Unmute Succesful')
-			.setDescription(`__**\`${member}\`**__\` has been unmuted for ${reason}\``);
+			.setDescription(`__**\`${user}\`**__\` has been unmuted for ${reason}\``);
 
-		return message.member.remove(mutedRole, [reason])
+		return user.remove(mutedRole, [reason])
 			.then(message.channel.send(embed))
 			.catch();
 	},
