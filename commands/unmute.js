@@ -33,7 +33,7 @@ module.exports = {
 				.setTitle('__Unmute Succesful__')
 				.setDescription(`__**\`${target}\`**__\` has been unmuted.\``);
 
-			return member.roles.remove(mutedRole)
+			return member.roles.remove(mutedRole.id)
 				.then(message.channel.send(embed))
 				.catch();
 		}
@@ -42,7 +42,7 @@ module.exports = {
 			.setTitle('Unmute Succesful')
 			.setDescription(`__**\`${target}\`**__\` has been unmuted for ${reason}\``);
 
-		return member.roles.remove(mutedRole, [reason])
+		return member.roles.remove(mutedRole.id, [reason])
 			.then(message.channel.send(embed))
 			.catch();
 
