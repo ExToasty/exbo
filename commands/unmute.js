@@ -13,34 +13,38 @@ module.exports = {
 	deleteMessage: true,
 	category: 'moderation',
 	wip: true,
-	execute(message, args, getUserFromMention) {
+	async execute(message, args, getUserFromMention) {
 		const reason = args.slice(1).join(' ');
 		const mutedRole = message.user.roles.cache.some(role => role.name === 'muted');
 		const user = getUserFromMention(args[0]);
 		const embed = new Discord.MessageEmbed().setColor(embedColor);
+		try {
+			if (!user.roles.cache.some(role => role.name === 'muted')) {
+				embed
+					.setTitle('__Unmute Unsuccesful__')
+					.setDescription(`__**\`${user}\`**__\` is not muted\``);
 
-		if (!user.roles.cache.some(role => role.name === 'muted')) {
+				return message.channel.send(embed);
+			}
+			if (!reason) {
+				embed
+					.setTitle('__Unmute Succesful__')
+					.setDescription(`__**\`${user}\`**__\` has been unmuted.\``);
+
+				await user.remove(mutedRole)
+					.then(message.channel.send(embed))
+					.catch();
+			}
 			embed
-				.setTitle('__Unmute Unsuccesful__')
-				.setDescription(`__**\`${user}\`**__\` is not muted\``);
+				.setTitle('Unmute Succesful')
+				.setDescription(`__**\`${user}\`**__\` has been unmuted for ${reason}\``);
 
-			return message.channel.send(embed);
-		}
-		if (!reason) {
-			embed
-				.setTitle('__Unmute Succesful__')
-				.setDescription(`__**\`${user}\`**__\` has been unmuted.\``);
-
-			return user.remove(mutedRole)
+			await user.remove(mutedRole, [reason])
 				.then(message.channel.send(embed))
 				.catch();
 		}
-		embed
-			.setTitle('Unmute Succesful')
-			.setDescription(`__**\`${user}\`**__\` has been unmuted for ${reason}\``);
-
-		return user.remove(mutedRole, [reason])
-			.then(message.channel.send(embed))
-			.catch();
+		catch (err) {
+			console.log(err);
+		}
 	},
 };
