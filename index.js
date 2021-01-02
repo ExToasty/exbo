@@ -75,10 +75,18 @@ client.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
-	const id = args[0].match(/^(\d+)$/);
 
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+	const getUserFromMention = (mention) => {
+		const matches = mention.match(/^<@!?(\d+)>$/);
+		if (!matches) return;
+		const id = matches[1];
+		return client.users.cache.get(id);
+	};
+
+	const user = getUserFromMention(args[0]);
 
 	if (!command) {
 		embed
@@ -153,7 +161,7 @@ client.on('message', async message => {
 		}
 	}
 
-	if (command.requireId && command.requireId === true && args[0] !== id) {
+	if (command.requireId && command.requireId === true && args[0] !== user) {
 		embed
 			.setTitle('__Invalid Arguement__')
 			.setDescription('`IDs are required for this command.`');

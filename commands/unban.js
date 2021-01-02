@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 module.exports = {
 	name: 'unban',
-	description: 'Unbans the user specified.',
+	description: 'Unbans the user specuseried.',
 	usage: `${prefix}unban <id> [reason]`,
 	aliases: ['pardon'],
 	guildOnly: false,
@@ -15,9 +15,9 @@ module.exports = {
 	cooldown: 5,
 	permissions: ['ADMIN'],
 	category: 'moderation',
-	execute(message, args, id) {
+	execute(message, args, user) {
 		const banList = message.guild.fetchBans();
-		const bannedUser = banList.find(user => user.id === 'id');
+		const bannedUser = banList.find(findUser => findUser.id === 'id');
 		const reason = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
@@ -32,15 +32,15 @@ module.exports = {
 		}
 
 		if (!reason) {
-			embed.setDescription(`__**\`${id}\`**__\` has been unbanned\``);
+			embed.setDescription(`__**\`${user}\`**__\` has been unbanned\``);
 
-			return message.guild.members.unban(id)
+			return message.guild.members.unban(user)
 				.then(message.channel.send(embed))
 				.catch();
 		}
-		embed.setDescription(`__**\`${id}\`**__\` has been unbanned for ${reason}\``);
+		embed.setDescription(`__**\`${user}\`**__\` has been unbanned for ${reason}\``);
 
-		return message.guild.members.unban(id, [reason])
+		return message.guild.members.unban(user, [reason])
 			.then(message.channel.send(embed))
 			.catch();
 	},
