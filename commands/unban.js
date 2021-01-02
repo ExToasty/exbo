@@ -10,7 +10,7 @@ module.exports = {
 	args: true,
 	selfExecute: false,
 	requireMention: false,
-	requireId: true,
+	requireId: false,
 	wip: false,
 	cooldown: 5,
 	permissions: ['ADMIN'],
