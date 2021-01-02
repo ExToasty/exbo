@@ -4,7 +4,7 @@ const { prefix, embedColor } = require('../config.json');
 module.exports = {
 	name: 'diceroll',
 	description: 'Rolls a dice',
-	usage: `${prefix}diceroll <positive integer>`,
+	usage: `${prefix}diceroll <sides>`,
 	aliases: ['roll', 'rolldice', 'dice', 'die'],
 	guildOnly: false,
 	args: false,
@@ -23,6 +23,15 @@ module.exports = {
 			.setColor(embedColor)
 			.setTitle('__Dice Roll Results__')
 			.setDescription(`\`You landed on \`__**\`${roll}\`**__\`.\``);
+
+		if (sides < 1) {
+			embed
+				.setTitle('Invalid Arguement')
+				.setDescription('`You must provide an integer greater than 1`')
+				.setFooter(`Run "${prefix}help diceroll" to get information about this command.`);
+
+			return message.channel.send(embed);
+		}
 
 		return message.channel.send(embed);
 	},
