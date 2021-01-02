@@ -16,16 +16,16 @@ module.exports = {
 	permissions: ['MANAGE_NICKNAMES'],
 	category: 'moderation',
 	execute(message, args) {
-		const member = message.mentions.members.first();
-		const nick = args.slice(1).join(' ');
+		let member = message.mentions.members.first();
+		let nick = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Succesfully Changed Nickname__');
 
 		if (!member) {
-			embed
-				.setDescription(`\`${message.author} changed their nickname to "${nick}"\``);
-			return message.author.setNickname(args[0]).then(message.channel.send(embed));
+			member = message.author;
+			embed.setDescription(`\`${message.author} changed their nickname to "${nick}"\``);
+			return member.setNickname(args[0]).then(message.channel.send(embed));
 		}
 		embed.setDescription(`\`${message.author} changed ${member}'s nickname to ${args[1]}.\``);
 		return member.setNickname(nick).then(message.channel.send(embed));
