@@ -16,7 +16,7 @@ module.exports = {
 	permissions: ['SEND_MESSAGES'],
 	category: 'fun',
 	execute(message, args) {
-		let sides = parseInt(args[0], 10) * 6;
+		let sides = parseInt(args[0], 10);
 		const roll = Math.floor(Math.random() * sides) + 1;
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
