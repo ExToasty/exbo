@@ -79,15 +79,15 @@ client.on('message', async message => {
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	const getUserFromMention = (mention) => {
+	/* const getUserFromMention = (mention) => {
 		const matches = mention.match(/^<@!?(\d+)>$/);
 		if (!matches) return;
 		const id = matches[1];
 		return client.users.cache.get(id);
-	};
+	}; */
 
 	// eslint-disable-next-line no-unused-vars
-	const user = getUserFromMention(args[0]);
+	// const user = getUserFromMention(args[0]);
 
 	if (!command) {
 		embed
