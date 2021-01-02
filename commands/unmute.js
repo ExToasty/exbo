@@ -13,12 +13,11 @@ module.exports = {
 	deleteMessage: true,
 	category: 'moderation',
 	wip: true,
-	execute(message, args, user) {
+	execute(message, args, getUserFromMention) {
 		const reason = args.slice(1).join(' ');
 		const mutedRole = message.user.roles.cache.some(role => role.name === 'muted');
-		// const user = message.mentions.users.first();
-		const embed = new Discord.MessageEmbed()
-			.setColor(embedColor);
+		const user = getUserFromMention(args[0]);
+		const embed = new Discord.MessageEmbed().setColor(embedColor);
 
 		if (!user.roles.cache.some(role => role.name === 'muted')) {
 			embed
