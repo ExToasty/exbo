@@ -9,7 +9,7 @@ module.exports = {
 	guildOnly: false,
 	args: true,
 	selfExecute: false,
-	requireMention: true,
+	requireMention: false,
 	wip: false,
 	cooldown: 5,
 	permissions: ['ADMIN'],
