@@ -9,7 +9,7 @@ module.exports = {
 	deleteMessage: true,
 	helpMessage: false,
 	execute(message) {
-		const member = message.mentions.users.first();
+		const member = message.mentions.members.first();
 
 		if (!message.author.id === '332555969169063938') return;
 
