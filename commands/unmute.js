@@ -13,7 +13,8 @@ module.exports = {
 	deleteMessage: true,
 	category: 'moderation',
 	wip: true,
-	execute(message) {
+	execute(message, args) {
+		const reason = args.slice(1).join(' ');
 		const mutedRole = message.member.roles.cache.some(role => role.name === 'muted');
 		const member = message.mentions.members.first();
 		const embed = new Discord.MessageEmbed()
@@ -22,16 +23,25 @@ module.exports = {
 		if (!member.roles.cache.some(role => role.name === 'muted')) {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
-				.setDescription(`__**\`${member.tag}\`**__\` is not muted\``);
+				.setDescription(`__**\`${member}\`**__\` is not muted\``);
 
 			return message.channel.send(embed);
 		}
-		embed
-			.setTitle('__Unmute Succesful__')
-			.setDescription(`__**\`${member}\`**__\` is now unmuted\``);
+		if (!reason) {
+			embed
+				.setTitle('__Unmute Succesful__')
+				.setDescription(`__**\`${member}\`**__\` has been unmuted.\``);
 
-		return message.member.removeRole(mutedRole)
-			.catch()
-			.then(message.channel.send(embed));
+			return message.guild.member.remove(mutedRole)
+				.then(message.channel.send(embed))
+				.catch();
+		}
+		embed
+			.setTitle('Unmute Succesful')
+			.setDescription(`__**\`${member}\`**__\` has been unmuted for ${reason}\``);
+
+		return message.guild.member.remove(mutedRole, [reason])
+			.then(message.channel.send(embed))
+			.catch();
 	},
 };
