@@ -16,10 +16,20 @@ module.exports = {
 	permissions: ['ADMIN'],
 	category: 'moderation',
 	execute(message, args, id) {
+		const banList = message.guild.fetchBans();
+		const bannedUser = banList.find(user => user.id === 'id');
 		const reason = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Succesfully Unbanned User__');
+
+		if (!bannedUser) {
+			embed
+				.setTitle('__Ban Unsuccesful__')
+				.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
+
+			return message.channel.send(embed);
+		}
 
 		if (!reason) {
 			embed.setDescription(`__**\`${id}\`**__\` has been unbanned\``);
