@@ -10,12 +10,12 @@ module.exports = {
 	args: true,
 	selfExecute: false,
 	requireMention: false,
+	requireId: true,
 	wip: false,
 	cooldown: 5,
 	permissions: ['ADMIN'],
 	category: 'moderation',
-	execute(message, args) {
-		const id = args[0];
+	execute(message, args, id) {
 		const reason = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
