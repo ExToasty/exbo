@@ -23,7 +23,7 @@ module.exports = {
 		if (!member.roles.cache.some(role => role.name === 'muted')) {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
-				.setDescription(`__**\`${target}\`**__\` is not muted\``);
+				.setDescription(`__**\`${target.tag}\`**__\` is not muted\``);
 
 			return message.channel.send(embed);
 		}
