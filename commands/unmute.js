@@ -44,5 +44,6 @@ module.exports = {
 		return target.roles.remove(mutedRole, [reason])
 			.then(message.channel.send(embed))
 			.catch();
+
 	},
 };
