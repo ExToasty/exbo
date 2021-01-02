@@ -86,6 +86,7 @@ client.on('message', async message => {
 		return client.users.cache.get(id);
 	};
 
+	// eslint-disable-next-line no-unused-vars
 	const user = getUserFromMention(args[0]);
 
 	if (!command) {
@@ -161,7 +162,7 @@ client.on('message', async message => {
 		}
 	}
 
-	if (command.requireId && command.requireId === true && args[0] != user) {
+	if (command.requireId && command.requireId === true) {
 		embed
 			.setTitle('__Invalid Arguement__')
 			.setDescription('`IDs are required for this command.`');
