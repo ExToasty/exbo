@@ -25,7 +25,7 @@ module.exports = {
 		if (!member) {
 			embed
 				.setDescription(`\`${message.author} changed their nickname to "${nick}"\``);
-			return message.author.setNickname(nick).then(message.channel.send(embed));
+			return message.author.setNickname(args[0]).then(message.channel.send(embed));
 		}
 		embed.setDescription(`\`${message.author} changed ${member}'s nickname to ${args[1]}.\``);
 		return member.setNickname(nick).then(message.channel.send(embed));
