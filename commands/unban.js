@@ -28,7 +28,7 @@ module.exports = {
 				.setTitle('__Ban Unsuccesful__')
 				.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
 
-			return message.channel.send(embed);
+			return message.channel.send(embed).catch();
 		}
 
 		if (!reason) {
