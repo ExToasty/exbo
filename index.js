@@ -75,6 +75,7 @@ client.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
+	const id = args[0].match(/^(\d+)$/);
 
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
@@ -150,6 +151,14 @@ client.on('message', async message => {
 
 			return message.channel.send(embed);
 		}
+	}
+
+	if (command.requireId && command.requireId === true && args[0] !== id) {
+		embed
+			.setTitle('__Invalid Arguement__')
+			.setDescription('`IDs are required for this command.`');
+
+		return message.channel.send(embed);
 	}
 
 	if (command.requireMention && command.requireMention === true && !message.mentions.users.first()) {
