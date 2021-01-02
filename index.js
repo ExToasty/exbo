@@ -69,6 +69,7 @@ client.on('guildMemberAdd', async member => {
 client.on('message', async message => {
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
 
+	if (message.content.toLowerCase() === 'oop') return message.channel.send('sksksksksksksksksk');
 	if (message.content.toLowerCase() === 'thx') return message.channel.send('ur welcome bb');
 	if (message.author.id === '632690114082111519') return message.channel.send('no');
 
