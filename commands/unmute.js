@@ -39,6 +39,6 @@ module.exports = {
 			.setTitle('Unmute Succesful')
 			.setDescription(`__**\`${target}\`**__\` has been unmuted for ${reason}\``);
 
-		return target.roles.remove(mutedRole, [reason]).then(message.channel.send(embed));
+		return target.roles.remove(mutedRole, reason).then(message.channel.send(embed));
 	},
 };
