@@ -31,17 +31,13 @@ module.exports = {
 					.setTitle('__Unmute Succesful__')
 					.setDescription(`__**\`${user}\`**__\` has been unmuted.\``);
 
-				await user.remove(mutedRole)
-					.then(message.channel.send(embed))
-					.catch();
+				await user.roles.remove(mutedRole).then(message.channel.send(embed));
 			}
 			embed
 				.setTitle('Unmute Succesful')
 				.setDescription(`__**\`${user}\`**__\` has been unmuted for ${reason}\``);
 
-			await user.remove(mutedRole, [reason])
-				.then(message.channel.send(embed))
-				.catch();
+			await user.roles.remove(mutedRole, [reason]).then(message.channel.send(embed));
 		}
 		catch (err) {
 			console.log(err);
