@@ -24,7 +24,7 @@ module.exports = {
 			.setDescription(`\`You landed on \`__**\`${roll}\`**__\`.\``);
 
 		if (!args.length) {
-			sides = 1;
+			sides = 6;
 		}
 
 		return message.channel.send(embed);
