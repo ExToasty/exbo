@@ -13,7 +13,7 @@ module.exports = {
 	deleteMessage: true,
 	category: 'moderation',
 	wip: true,
-	async execute(message, args, getUserFromMention) {
+	execute(message, args, getUserFromMention) {
 		const reason = args.slice(1).join(' ');
 		const mutedRole = message.user.roles.cache.some(role => role.name === 'muted');
 		const user = getUserFromMention(args[0]);
@@ -30,7 +30,7 @@ module.exports = {
 				.setTitle('__Unmute Succesful__')
 				.setDescription(`__**\`${user}\`**__\` has been unmuted.\``);
 
-			await user.roles.remove(mutedRole)
+			return user.roles.remove(mutedRole)
 				.then(message.channel.send(embed))
 				.catch();
 		}
