@@ -109,11 +109,10 @@ client.on('message', async message => {
 		return message.reply('That command is not executable in DMs');
 	}
 
-	if (!message.author.id === '332555969169063938' && command.permissions
-		&& !message.member.hasPermission(command.permissions)) {
+	if (!message.author.id === '332555969169063938' && command.permissions && !message.author.hasPermission(command.permissions)) {
 		embed
 			.setTitle('__Insufficient Permissions__')
-			.setDescription(`\`You don't have the permissions to run this command\``);
+			.setDescription(`\`You don't have the permissions to run this command.\``);
 
 		return message.channel.send(embed);
 	}
