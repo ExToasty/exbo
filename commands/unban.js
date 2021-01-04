@@ -16,14 +16,18 @@ module.exports = {
 	permissions: ['ADMIN'],
 	category: 'moderation',
 	async execute(message, args) {
-		const id = args.includes('<@!') ? args.replace('<@!', '').replace('>', '') : args.includes('<@') ? args.replace('<@', '').replace('<', '') : '';
 		const bans = message.guild.fetchBans();
-		const user = bans.get(id);
+		const user = bans.some(findUser => findUser.id === args[0]);
 		const reason = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Succesfully Unbanned User__');
 
+		if (!args[0]) {
+			embed
+				.setTitle('__Ban Unsuccesful__')
+				.setDescription('`Invalid user ID provided`');
+		}
 		if (!user) {
 			embed
 				.setTitle('__Ban Unsuccesful__')
