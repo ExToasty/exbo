@@ -17,14 +17,15 @@ module.exports = {
 	category: 'moderation',
 	async execute(message, args) {
 		try {
+			const id = args[0];
 			const bans = await message.guild.fetchBans();
-			const user = bans.find(findUser => findUser.id === `${args[0]}`);
+			const user = bans.find(findUser => findUser.id === id);
 			const reason = args.slice(1).join(' ');
 			const embed = new Discord.MessageEmbed()
 				.setColor(embedColor)
 				.setTitle('__Succesfully Unbanned User__');
 
-			if (!user) {
+			if (!id) {
 				embed
 					.setTitle('__Ban Unsuccesful__')
 					.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
