@@ -37,8 +37,8 @@ module.exports = {
 			.setColor(embedColor)
 			.setTitle('__Invite Links__')
 			.addFields(
-				{ name: '__Discord Server__', value: 'https://discord.gg/U6eePgu', inline: true },
-				{ name: '__Discord Bot__', value: 'https://discord.com/oauth2/authorize?client_id=759836239791915028&scope=bot&permissions=8', inline: true },
+				{ name: '__Discord Server__', value: 'http://gg.gg/exininvite', inline: true },
+				{ name: '__Discord Bot__', value: 'http://gg.gg/exboinvite', inline: true },
 			);
 
 		try {
