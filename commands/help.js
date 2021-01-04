@@ -23,8 +23,6 @@ information on a command.',
 		const fun = '`' + commands.filter(command => command.category === 'fun')
 			.map(f => f.name).join('`, `') + '`';
 
-		//  const total = moderation.length() + information.length() + length() + fun.length();
-
 		if (!args.length) {
 			const embed = new Discord.MessageEmbed()
 				.setColor(embedColor)
@@ -35,7 +33,7 @@ information on a command.',
 					{ name: '\u200B', value: '\u200B' },
 					{ name: '__Chat__', value: chat, inline: true },
 					{ name: '__Fun__', value: fun, inline: true },
-					//        { name: '__Total Command__', value: `\`${total}\``, inline: false }
+					{ name: '__Total Command__', value: `\`${commands.size}\``, inline: false },
 				)
 				.setFooter(`To get help for a specific command, run \`${prefix}help <command>\``);
 			return message.channel.send(embed);
