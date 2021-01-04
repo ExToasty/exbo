@@ -29,17 +29,19 @@ module.exports = {
 					.setTitle('__Ban Unsuccesful__')
 					.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
 
-				await message.channel.send(embed);
+				return message.channel.send(embed);
 			}
 
 			if (!reason) {
 				embed.setDescription(`__**\`${user}\`**__\` has been unbanned\``);
 
-				await message.guild.members.unban(user).then(message.channel.send(embed));
+				await message.guild.members.unban(user);
+				return message.channel.send(embed);
 			}
 			embed.setDescription(`__**\`${user}\`**__\` has been unbanned for ${reason}\``);
 
-			await message.guild.members.unban(user, [reason]).then(message.channel.send(embed));
+			await message.guild.members.unban(user, [reason]);
+			return message.channel.send(embed);
 		}
 		catch (err) {
 			console.error(err);
