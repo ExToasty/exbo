@@ -19,8 +19,8 @@ module.exports = {
 		const welcome = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Welcome to ExIn__')
-			.setDescription('Welcome to ExIn. Official server for all of `ExquisiteToast#3620`\'s current projects and the projects to come.\n \
-		                   Just a quick little reminder to follow Discord\'s ToS at all times and just use your common sense.');
+			.setDescription('`Welcome to ExIn. Official server for all of ExquisiteToast#3620\'s current projects and the projects to come.\n \
+		                   Just a quick little reminder to follow Discord\'s ToS at all times and just use your common sense.`');
 		const rules = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Rules__')
