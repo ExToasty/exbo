@@ -17,8 +17,8 @@ module.exports = {
 	category: 'moderation',
 	async execute(message, args, user) {
 		const banList = await message.guild.fetchBans();
-		const bannedUser = banList.find(findUser => findUser.id === 'id');
 		const id = args[0];
+		const bannedUser = banList.find(findUser => findUser.id === id);
 		const reason = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
