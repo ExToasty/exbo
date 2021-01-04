@@ -16,6 +16,11 @@ module.exports = {
 	permissions: ['ADMINISTRATOR'],
 	// category: 'moderation,
 	async execute(message) {
+		const welcome = new Discord.MessageEmbed()
+			.setColor(embedColor)
+			.setTitle('__Welcome to ExIn__')
+			.setDescription('Welcome to ExIn. Official server for all of `ExquisiteToast#3620`\'s current projects and the projects to come.\n \
+		                   Just a quick little reminder to follow Discord\'s ToS at all times and just use your common sense.');
 		const rules = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Rules__')
@@ -32,7 +37,7 @@ module.exports = {
 			.setTitle('__Extra Information__')
 			.addFields(
 				{ name: '__Invite Links__', value: '`The only REAL invites to this server and for the bot are in the embed below.`', inline: true },
-				{ name: '__Punishments__', value: '`You do not have to break the rules to be punished, use your common sense and you\'ll be fine.`', inline: true },
+				{ name: '__Punishments__', value: '`You do not have to break the rules to be punished.`', inline: true },
 			);
 		const invites = new Discord.MessageEmbed()
 			.setColor(embedColor)
@@ -43,6 +48,7 @@ module.exports = {
 			);
 
 		try {
+			await message.channel.send(welcome);
 			await message.channel.send(rules);
 			await message.channel.send(extraInfo);
 			await message.channel.send(invites);
