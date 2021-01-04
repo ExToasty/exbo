@@ -25,7 +25,7 @@ Just a quick little reminder to follow Discord\'s ToS at all times and just use 
 			.setColor(embedColor)
 			.setTitle('__Rules__')
 			.addFields(
-				{ name: '__Rule 1__', value: '`Be respetful to everyone. We don\'t need any toxicity in this server.`' },
+				{ name: '__Rule 1__', value: '`Be respectful to everyone. We don\'t need any toxicity in this server.`' },
 				{ name: '__Rule 2__', value: '`Any type of slurs against race or sexuality, are not tolerable.`' },
 				{ name: '__Rule 3__', value: '`Use channels for their respective purpose.`' },
 				{ name: '__Rule 4__', value: '`Do NOT user a member\'s real name, unless given EXPLICIT permission from the member`' },
