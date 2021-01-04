@@ -16,35 +16,33 @@ module.exports = {
 	permissions: ['ADMIN'],
 	category: 'moderation',
 	async execute(message, args) {
-		const user = message.users.fetch(args[0]);
+		const id = args.includes('<@!') ? args.replace('<@!', '').replace('>', '') : args.includes('<@') ? args.replace('<@', '').replace('<', '') : '';
+		const bans = message.guild.fetchBans();
+		const user = bans.get(id);
 		const reason = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Succesfully Unbanned User__');
-		try {
-			if (!user) {
-				embed
-					.setTitle('__Ban Unsuccesful__')
-					.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
 
-				return message.channel.send(embed).catch();
-			}
+		if (!user) {
+			embed
+				.setTitle('__Ban Unsuccesful__')
+				.setDescription('`The user provided isn\'t banned or doesn\'t exist.`');
 
-			if (!reason) {
-				embed.setDescription(`__**\`${user}\`**__\` has been unbanned\``);
+			return message.channel.send(embed).catch();
+		}
 
-				return message.guild.members.unban(user)
-					.then(message.channel.send(embed))
-					.catch();
-			}
-			embed.setDescription(`__**\`${user}\`**__\` has been unbanned for ${reason}\``);
+		if (!reason) {
+			embed.setDescription(`__**\`${user}\`**__\` has been unbanned\``);
 
-			return message.guild.members.unban(user, [reason])
+			return message.guild.members.unban(user)
 				.then(message.channel.send(embed))
 				.catch();
 		}
-		catch (err) {
-			console.error(err);
-		}
+		embed.setDescription(`__**\`${user}\`**__\` has been unbanned for ${reason}\``);
+
+		return message.guild.members.unban(user, [reason])
+			.then(message.channel.send(embed))
+			.catch();
 	},
 };
