@@ -27,6 +27,9 @@ module.exports = {
 					permissions:[{
 						'SEND_MESSAGES': false,
 						'ADD_REACTIONS': false,
+						'STREAM': false,
+						'SPEAK': false,
+						'USE_VAD': false,
 					}],
 				},
 			});
