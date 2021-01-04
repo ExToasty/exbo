@@ -20,11 +20,11 @@ module.exports = {
 			.setColor(embedColor)
 			.setTitle('__Rules__')
 			.addFields(
-				{ name: '__Rule 1__', value: '`Be respetful to everyone.`', inline: true },
-				{ name: '__Rule 2__', value: '`Toxcitity is not tolerated, ESPECIALLY not towards the staff members.`', inline: true },
-				{ name: '__Rule 3__', value: '`Any type of slurs against race or sexuality, are not tolerable.`', inline: true },
-				{ name: '__Rule 4__', value: '`Use channels for their respective purpose.`', inline: true },
-				{ name: '__Rule 5__', value: '`Do NOT user a member\'s real name, unless given EXPLICIT permission from the member`', inline: true },
+				{ name: '__Rule 1__', value: '`Be respetful to everyone.`' },
+				{ name: '__Rule 2__', value: '`Toxcitity is not tolerated, ESPECIALLY not towards the staff members.`' },
+				{ name: '__Rule 3__', value: '`Any type of slurs against race or sexuality, are not tolerable.`' },
+				{ name: '__Rule 4__', value: '`Use channels for their respective purpose.`' },
+				{ name: '__Rule 5__', value: '`Do NOT user a member\'s real name, unless given EXPLICIT permission from the member`' },
 			);
 		const extraInfo = new Discord.MessageEmbed()
 			.setColor(embedColor)
