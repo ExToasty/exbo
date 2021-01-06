@@ -15,7 +15,7 @@ module.exports = {
 	cooldown: 3,
 	deleteMessage: true,
 	permissions: ['SEND_MESSAGES'],
-	category: 'chat',
+	category: 'fun',
 	execute(message, args) {
 		const embed = new Discord.MessageEmbed();
 		if (message.author.id !== '332555969169063938' && args.includes('@everyone') || args.includes('@here') && !message.member.hasPermission('ADMINISTRATOR')) {

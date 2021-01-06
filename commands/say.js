@@ -9,7 +9,7 @@ module.exports = {
 	args: true,
 	aliases: ['chat', 'speak', 'text', 'talk'],
 	usage: `${prefix}say <message>`,
-	category: 'chat',
+	category: 'fun',
 	deleteMessage: true,
 	execute(message, args) {
 		if (message.author.id != '332555969169063938' && args.includes('@everyone') || args.includes('@here') && !message.member.hasPermission('ADMINISTRATOR')) {
