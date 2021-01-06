@@ -20,8 +20,6 @@ information on a command.',
 			.map(i => i.name).join('`, `') + '`';
 		const chat = '`' + commands.filter(command => command.category === 'chat')
 			.map(c => c.name).join('`, `') + '`';
-		const fun = '`' + commands.filter(command => command.category === 'fun')
-			.map(f => f.name).join('`, `') + '`';
 
 		if (!args.length) {
 			const embed = new Discord.MessageEmbed()
