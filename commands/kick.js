@@ -16,8 +16,6 @@ module.exports = {
 	permissions: ['KICK_MEMBERS'],
 	category: 'moderation',
 	execute(message, args) {
-		message.channel.send(`${args.length} argements were given.`);
-
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('Member Succesfully Kicked');

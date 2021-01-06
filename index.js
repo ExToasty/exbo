@@ -122,6 +122,7 @@ client.on('message', async message => {
 	}
 
 	if (command.minArgs && args.length != command.minArgs + 1) {
+		message.channel.send(`${args.length} argements were given.`);
 		embed
 			.setTitle('__Missing Arguments__')
 			.setDescription(`\`A minimum of atleast ${command.minArgs} arguement(s) are required.\``);
