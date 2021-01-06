@@ -34,7 +34,7 @@ information on a command.',
 					{ name: '__Chat__', value: chat, inline: true },
 					{ name: '__Fun__', value: fun, inline: true },
 					{ name: '\u200B', value: '\u200B' },
-					{ name: '__Total Command__', value: `\`${commands.size}\``, inline: false },
+					{ name: '__Total Commands__', value: `\`${commands.size}\``, inline: false },
 				)
 				.setFooter(`To get help for a specific command, run \`${prefix}help <command>\``);
 			return message.channel.send(embed);
