@@ -121,7 +121,7 @@ client.on('message', async message => {
 		return message.channel.send(embed);
 	}
 
-	if (command.minArgs && args.length != command.minArgs + 1) {
+	if (command.minArgs && args.length != command.minArgs) {
 		message.channel.send(`${args.length} argements were given.`);
 		embed
 			.setTitle('__Missing Arguments__')
