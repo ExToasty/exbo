@@ -113,7 +113,7 @@ client.on('message', async message => {
 		return message.reply('That command is not executable in DMs');
 	}
 
-	if (command.permissions && !message.author.hasPermission(command.permissions)) {
+	if (command.permissions && !message.member.hasPermission(command.permissions)) {
 		embed
 			.setTitle('__Insufficient Permissions__')
 			.setDescription(`\`You don't have the permissions to run this command.\``);
