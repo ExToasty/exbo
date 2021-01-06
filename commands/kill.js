@@ -24,7 +24,9 @@ module.exports = {
 				.setTitle('__Restart Succesful__')
 				.setDescription(`The bot has been restarted by ${message.member.user.tag}`);
 
-			return process.exit().then(message.channel.send(embed));
+			return process.exit()
+				.then(message.channel.send(embed))
+				.catch(console.error());
 		}
 	},
 };
