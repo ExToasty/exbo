@@ -13,6 +13,7 @@ module.exports = {
 	cooldown: 10,
 	args: true,
 	deleteMessage: true,
+	permissions: 'SEND_MESSAGES',
 	execute(message, args) {
 		const commandName = args[0].toLowerCase();
 		const command = message.client.commands.get(commandName)

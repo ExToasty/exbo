@@ -13,7 +13,7 @@ module.exports = {
 	wip: false,
 	cooldown: 5,
 	deleteMessage: true,
-	permissions: ['ADMINISTRATOR'],
+	permissions:'ADMINISTRATOR',
 	// category: 'moderation,
 	async execute(message) {
 		const welcome = new Discord.MessageEmbed()

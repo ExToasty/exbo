@@ -13,7 +13,7 @@ module.exports = {
 	wip: false,
 	cooldown: 5,
 	deleteMessage: true,
-	permissions: ['KICK_MEMBERS'],
+	permissions: 'KICK_MEMBERS',
 	category: 'moderation',
 	execute(message, args) {
 		const embed = new Discord.MessageEmbed()

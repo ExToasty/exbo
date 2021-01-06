@@ -15,7 +15,7 @@ module.exports = {
 	wip: false,
 	cooldowm: 3,
 	deleteMessage: true,
-	permissions: ['SEND_MESSAGES'],
+	permissions: 'SEND_MESSAGES',
 	category: 'information',
 	execute(message) {
 		message.reply('Calculating latency...').then((result) => {

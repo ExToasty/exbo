@@ -13,7 +13,7 @@ module.exports = {
 	wip: false,
 	cooldown: 2,
 	deleteMessage: true,
-	permissions: ['MANAGE_NICKNAMES', 'CHANGE_NICKNAME'],
+	permissions: 'MANAGE_NICKNAMES',
 	category: 'moderation',
 	execute(message, args) {
 		const member = message.mentions.members.first();

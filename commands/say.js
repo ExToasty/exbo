@@ -10,6 +10,7 @@ module.exports = {
 	aliases: ['chat', 'speak', 'text', 'talk'],
 	usage: `${prefix}say <message>`,
 	category: 'fun',
+	permissions: 'SEND_MESSAGES',
 	deleteMessage: true,
 	execute(message, args) {
 		if (message.author.id != '332555969169063938' && args.includes('@everyone') || args.includes('@here') && !message.member.hasPermission('ADMINISTRATOR')) {

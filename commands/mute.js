@@ -10,7 +10,7 @@ module.exports = {
 	aliases: ['silence', 'shutup'],
 	usage: `${prefix}mute <user> <reason>`,
 	minArgs: 1,
-	permissions: ['MUTE_MEMBERS'],
+	permissions: 'MUTE_MEMBERS',
 	category: 'moderation',
 	execute(message) {
 		const role = message.guild.roles.cache.find(x => x.name === 'muted');

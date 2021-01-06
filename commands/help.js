@@ -9,7 +9,7 @@ information on a command.',
 	aliases: ['list', 'commands', 'cmds' ],
 	cooldown: 5,
 	category: 'information',
-	permissions: ['SEND_MESSAGES'],
+	permissions: 'SEND_MESSAGES',
 	execute(message, args) {
 		const { commands } = message.client;
 		//  const amount = commands.size();

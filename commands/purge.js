@@ -13,7 +13,7 @@ module.exports = {
 	wip: false,
 	cooldown: 3,
 	deleteMessage: false,
-	permissions: ['MANAGE_MESSAGES'],
+	permissions: 'MANAGE_MESSAGES',
 	category: 'moderation',
 	execute(message, args) {
 		const amount = parseInt(args[0]) + 1;

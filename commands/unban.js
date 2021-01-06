@@ -13,7 +13,7 @@ module.exports = {
 	requireId: false,
 	wip: false,
 	cooldown: 5,
-	permissions: ['ADMIN'],
+	permissions: 'ADMIN',
 	category: 'moderation',
 	async execute(message, args) {
 		try {

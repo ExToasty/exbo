@@ -5,7 +5,7 @@ module.exports = {
 	name: 'unmute',
 	description: 'If the specified member is muted, the it unmutes them.',
 	usage: `\`${prefix}unmute <user> [reason]\``,
-	permissions: ['MANAGE_ROLES'],
+	permissions: 'MANAGE_ROLES',
 	guildOnly: true,
 	selfExecute: true,
 	args: true,
