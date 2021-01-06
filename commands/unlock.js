@@ -21,7 +21,7 @@ module.exports = {
 			.setTitle('__Channel Has Been Unlocked__')
 			.setDescription('`This channel has been reopened for everyone to use.`');
 
-		return message.channel.permissionOverwrites.get(message.guild.roles.everyone.id)
+		return message.channel.permissionOverwrites.get(message.channel.guild.roles.everyone.id).delete()
 			.then(message.channel.send(embed))
 			.catch(console.error);
 	},
