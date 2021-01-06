@@ -1,5 +1,5 @@
 {
-  "prefix": ">",
-  "version": "3.6 Beta",
+  "prefix": [">", "~"],
+  "version": "3.8.3 Beta",
   "embedColor": "#825908"
 }
