@@ -18,8 +18,8 @@ information on a command.',
 			.map(m => m.name).join('`, `') + '`';
 		const information = '`' + commands.filter(command => command.category === 'information')
 			.map(i => i.name).join('`, `') + '`';
-		const chat = '`' + commands.filter(command => command.category === 'chat')
-			.map(c => c.name).join('`, `') + '`';
+		const fun = '`' + commands.filter(command => command.category === 'fun')
+			.map(f => f.name).join('`, `') + '`';
 
 		if (!args.length) {
 			const embed = new Discord.MessageEmbed()
@@ -28,7 +28,7 @@ information on a command.',
 				.addFields(
 					{ name: '__Moderation__', value: moderation, inline: true },
 					{ name: '__Information__', value: information, inline: true },
-					{ name: '__Chat__', value: chat, inline: true },
+					{ name: 'Fun', value: fun, inline: true },
 					{ name: '\u200B', value: '\u200B' },
 					{ name: '__Total Commands__', value: `\`${commands.size}\``, inline: false },
 				)
