@@ -4,10 +4,10 @@ const { prefix, embedColor } = require('../config.json');
 module.exports = {
 	name: 'nick',
 	description: 'Sets the nickname of the user specified',
-	usage: `${prefix}nick <user/nickname> [nickname]`,
+	usage: `${prefix}nick <user> [nickname]`,
 	aliases: ['nickname', 'setnick', 'setnickname'],
 	guildOnly: true,
-	args: true,
+	minArgs: 2,
 	selfExecute: true,
 	requireMention: false,
 	wip: false,

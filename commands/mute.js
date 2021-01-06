@@ -9,7 +9,7 @@ module.exports = {
 	guildOnly: true,
 	aliases: ['silence', 'shutup'],
 	usage: `${prefix}mute <user> <reason>`,
-	args: true,
+	minArgs: 1,
 	permissions: ['MUTE_MEMBERS'],
 	category: 'moderation',
 	execute(message) {

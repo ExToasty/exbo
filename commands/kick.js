@@ -7,7 +7,7 @@ module.exports = {
 	usage: `${prefix}kick <member> [reason]`,
 	// aliases: [''],
 	guildOnly: true,
-	args: true,
+	minArgs: 1,
 	selfExecite: false,
 	requireMention: true,
 	wip: false,

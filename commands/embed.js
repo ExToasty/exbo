@@ -8,7 +8,7 @@ module.exports = {
 	description: 'Embeds the agruments specified.',
 	usage: `${prefix}embed <message>`,
 	guildOnly: false,
-	args: true,
+	minArgs: 1,
 	selfExecute: false,
 	requireMention: false,
 	wip: false,

@@ -68,8 +68,12 @@ client.on('guildMemberAdd', async member => {
 
 client.on('message', async message => {
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
+	const oop = [
+		'object oriented programming',
+		'oop',
+	];
 
-	if (message.content.toLowerCase() === 'oop' || message.content.toLowerCase() === 'object oriented programming') {
+	if (message.content.toLowerCase() === oop) {
 		message.channel.send('sksksksksksksksksk');
 	}
 	if (message.content.toLowerCase() === 'thx') return message.channel.send('ur welcome bb');
@@ -109,7 +113,7 @@ client.on('message', async message => {
 		return message.reply('That command is not executable in DMs');
 	}
 
-	if (!message.author.id === '332555969169063938' && command.permissions && !message.author.hasPermission(command.permissions)) {
+	if (!message.author.id === '332555969169063938' && command.permissions && command.permissions.length && !message.author.hasPermission(command.permissions)) {
 		embed
 			.setTitle('__Insufficient Permissions__')
 			.setDescription(`\`You don't have the permissions to run this command.\``);
@@ -117,10 +121,10 @@ client.on('message', async message => {
 		return message.channel.send(embed);
 	}
 
-	if (command.args && command.args === true && !args.length) {
+	if (command.minArgs && args.length !== command.minArgs) {
 		embed
 			.setTitle('__Missing Arguments__')
-			.setDescription('`Arguments are required for this command to function.`');
+			.setDescription(`\`A minimum of atleast ${command.minArgs} arguement(s) are required.\``);
 
 		if (command.usage) embed.addField('__Usage__', `\`${command.usage}\``);
 

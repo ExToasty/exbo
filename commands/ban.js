@@ -9,7 +9,7 @@ module.exports = {
 	usage: `${prefix}ban <user> [reason]`,
 	// aliases: [''],
 	guildOnly: true,
-	args: true,
+	minArgs: 1,
 	selfExecute: false,
 	requireMention: true,
 	wip: false,

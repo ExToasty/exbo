@@ -7,7 +7,7 @@ module.exports = {
 	usage: `${prefix}restart`,
 	aliases: ['end', 'exit', 'destroy'],
 	guildOnly: false,
-	args: false,
+	minArgs: 0,
 	selfExecute: false,
 	requireMention: false,
 	wip: false,
