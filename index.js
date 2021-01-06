@@ -107,10 +107,6 @@ client.on('message', async message => {
 		return message.channel.send(embed) && console.error();
 	}
 
-	if (command.deleteMessage && command.deleteMessage === true) {
-		message.delete({ timeout: 1000 });
-	}
-
 	if (command.guildOnly && command.guildOnly === true && message.channel.type === 'dm') {
 		return message.reply('That command is not executable in DMs');
 	}
@@ -193,6 +189,10 @@ client.on('message', async message => {
 		embed
 			.setTitle('__Command Unavailable__')
 			.setDescription('`This command isn\'t functional at the moment, please be patient.`');
+	}
+
+	if (command.deleteMessage && command.deleteMessage === true) {
+		message.delete({ timeout: 1000 });
 	}
 
 	try {
