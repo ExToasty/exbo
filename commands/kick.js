@@ -19,7 +19,7 @@ module.exports = {
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('Member Succesfully Kicked');
-		const member = message.mentions.members.first();
+		const member = args[0];
 		const reason = args.slice(1).join(' ');
 
 		if (!reason) {
