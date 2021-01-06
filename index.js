@@ -4,7 +4,7 @@ const port = 3000;
 
 app.get('/', (req, res) => res.send('Uh, why are you here and how did you find this? Anyways, thats besides the point, have you joined our official Discord server? You haven\'t? Well thats no good! Here is the link: https://discord.gg/U6eePgu and we can\'t forget about the bot, now can we? Here is the invite link for the bot: https://discord.com/oauth2/authorize?client_id=759836239791915028&scope=bot&permissions=8 Enjoy your stay!'));
 
-app.listen(port, () => console.log(`ExBo's website is up!`));
+app.listen(port, () => console.log(`ExBo's website is up on port ${port}`));
 
 // Discord Bot Starts Now!
 const fs = require('fs');
