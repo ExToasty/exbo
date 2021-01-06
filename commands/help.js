@@ -30,9 +30,7 @@ information on a command.',
 				.addFields(
 					{ name: '__Moderation__', value: moderation, inline: true },
 					{ name: '__Information__', value: information, inline: true },
-					{ name: '\u200B', value: '\u200B' },
 					{ name: '__Chat__', value: chat, inline: true },
-					{ name: '__Fun__', value: fun, inline: true },
 					{ name: '\u200B', value: '\u200B' },
 					{ name: '__Total Commands__', value: `\`${commands.size}\``, inline: false },
 				)
