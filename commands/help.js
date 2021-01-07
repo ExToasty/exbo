@@ -28,7 +28,7 @@ information on a command.',
 				.addFields(
 					{ name: '__Moderation__', value: moderation, inline: true },
 					{ name: '__Information__', value: information, inline: true },
-					{ name: 'Fun', value: fun, inline: true },
+					{ name: '__Fun__', value: fun, inline: true },
 					{ name: '\u200B', value: '\u200B' },
 					{ name: '__Total Commands__', value: `\`${commands.size}\``, inline: false },
 				)
@@ -37,7 +37,8 @@ information on a command.',
 		}
 
 		const name = args[0].toLowerCase();
-		const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+		const command = commands.get(name)
+			|| commands.find(c => c.aliases && c.aliases.includes(name));
 
 		if (!command) {
 			return message.reply('Invalid command or alias.');
