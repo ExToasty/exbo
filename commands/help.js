@@ -11,6 +11,7 @@ information on a command.',
 	category: 'information',
 	permissions: 'SEND_MESSAGES',
 	execute(message, args) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const { commands } = message.client;
 
 		const moderation = '`' + commands.filter(command => command.category === 'moderation')
