@@ -9,7 +9,7 @@ module.exports = {
 	usage: `${prefix}version`,
 	category: 'information',
 	execute(message, args) {
-		message.delete( {timeout: 1000 }).catch(console.error);
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const embed = new Discord.MessageEmbed(args)
 			.setTitle('__Version__')
 			.setDescription(`\`${version}\``)

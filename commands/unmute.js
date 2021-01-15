@@ -13,7 +13,7 @@ module.exports = {
 	category: 'moderation',
 	wip: true,
 	execute(message, args) {
-		message.delete( {timeout: 1000 }).catch(console.error);
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const reason = args.slice(1).join(' ');
 		const mutedRole = message.guild.roles.cache.find(role => role.name === 'muted');
 		const target = message.mentions.members.first();
