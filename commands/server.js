@@ -9,9 +9,9 @@ module.exports = {
 	guildOnly: true,
 	aliases: ['serverinfo'],
 	usage: `${prefix}server`,
-	deleteMessage: true,
 	category: 'information',
 	execute(message) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const bots = 2;
 		const members = message.guild.memberCount;
 		const users = members - bots;

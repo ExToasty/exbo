@@ -12,10 +12,10 @@ module.exports = {
 	requireMention: true,
 	wip: false,
 	cooldown: 5,
-	deleteMessage: true,
 	permissions: 'KICK_MEMBERS',
 	category: 'moderation',
-	execute(message, args) {
+	async execute(message, args) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('Member Succesfully Kicked');

@@ -12,7 +12,6 @@ module.exports = {
 	requireMention: false,
 	wip: false,
 	cooldown: 3,
-	deleteMessage: false,
 	permissions: 'MANAGE_MESSAGES',
 	category: 'moderation',
 	execute(message, args) {

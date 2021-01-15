@@ -11,8 +11,8 @@ module.exports = {
 	usage: `${prefix}say <message>`,
 	category: 'fun',
 	permissions: 'SEND_MESSAGES',
-	deleteMessage: true,
 	execute(message, args) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		if (message.author.id != '332555969169063938' && args.includes('@everyone') || args.includes('@here') && !message.member.hasPermission('ADMINISTRATOR')) {
 			const embed = new Discord.MessageEmbed()
 				.setColor(embedColor)

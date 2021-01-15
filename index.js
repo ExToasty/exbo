@@ -189,10 +189,6 @@ client.on('message', async message => {
 			.setDescription('`This command isn\'t functional at the moment, please be patient.`');
 	}
 
-	if (command.deleteMessage && command.deleteMessage === true) {
-		message.delete({ timeout: 1000 });
-	}
-
 	try {
 		embed
 			.setTitle('__Error Executing Command__')

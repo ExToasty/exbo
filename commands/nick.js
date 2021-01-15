@@ -20,9 +20,8 @@ module.exports = {
 		const nick = args.slice(1).join(' ');
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
-			.setTitle('__Succesfully Changed Nickname__');
-
-		embed.setDescription(`\`${message.author} changed ${member}'s nickname to ${args[1]}.\``);
+			.setTitle('__Succesfully Changed Nickname__')
+			.setDescription(`\`${message.author} changed ${member}'s nickname to ${args[1]}.\``);
 		return member.setNickname(nick).then(message.channel.send(embed));
 	},
 };

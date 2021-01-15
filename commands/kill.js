@@ -12,10 +12,10 @@ module.exports = {
 	requireMention: false,
 	wip: false,
 	cooldown: 10,
-	deleteMessage: true,
 	permissions: 'ADMINISTRATOR',
 	category: 'moderation',
 	execute(message) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor);
 

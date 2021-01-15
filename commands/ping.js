@@ -14,10 +14,10 @@ module.exports = {
 	requireMention: false,
 	wip: false,
 	cooldowm: 3,
-	deleteMessage: true,
 	permissions: 'SEND_MESSAGES',
 	category: 'information',
 	execute(message) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		message.reply('Calculating latency...').then((result) => {
 			const ping = Date.now() - message.createdTimestamp;
 

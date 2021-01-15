@@ -12,7 +12,6 @@ information on a command.',
 	permissions: 'SEND_MESSAGES',
 	execute(message, args) {
 		const { commands } = message.client;
-		//  const amount = commands.size();
 
 		const moderation = '`' + commands.filter(command => command.category === 'moderation')
 			.map(m => m.name).join('`, `') + '`';

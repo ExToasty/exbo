@@ -12,9 +12,9 @@ module.exports = {
 	category: 'bot',
 	cooldown: 10,
 	args: true,
-	deleteMessage: true,
 	permissions: 'SEND_MESSAGES',
 	execute(message, args) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const commandName = args[0].toLowerCase();
 		const command = message.client.commands.get(commandName)
       || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));

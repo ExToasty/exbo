@@ -12,10 +12,10 @@ module.exports = {
 	requireMention: false,
 	wip: false,
 	cooldown: 3,
-	deleteMessage: true,
 	permissions: ['MANAGE_CHANNELS'],
 	category: 'moderation',
 	execute(message) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Channel Is Now Locked__')

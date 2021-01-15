@@ -12,10 +12,10 @@ module.exports = {
 	requireMention: false,
 	wip: false,
 	cooldown: 5,
-	deleteMessage: true,
 	permissions:'ADMINISTRATOR',
 	// category: 'moderation,
 	async execute(message) {
+		message.delete({ timeout: 1000 }).catch(console.error);
 		const welcome = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Welcome to ExIn__')
