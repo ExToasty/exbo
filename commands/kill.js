@@ -14,7 +14,7 @@ module.exports = {
 	cooldown: 10,
 	permissions: 'SEND_MESSAGES',
 	category: 'moderation',
-	execute(message) {
+	async execute(message) {
 		message.delete({ timeout: 1000 }).catch(console.error);
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor);
@@ -24,9 +24,11 @@ module.exports = {
 				.setTitle('__Restart Succesful__')
 				.setDescription(`The bot has been restarted by ${message.member.user.tag}`);
 
-			return process.exit()
-				.then(message.channel.send(embed))
-				.catch(console.error());
+			await message.channel.send(embed).catch(console.error);
+			return process.exit();
+		}
+		else {
+			message.channel.send('u cant use this command loser').catch(console.error);
 		}
 	},
 };
