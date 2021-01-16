@@ -21,8 +21,8 @@ module.exports = {
 
 		if (message.author.id === '332555969169063938') {
 			embed
-				.setTitle('__Restart Succesful__')
-				.setDescription(`The bot has been restarted by ${message.member.user.tag}`);
+				.setTitle('Kill Succesful__')
+				.setDescription(`The bot has been killed.`);
 
 			await message.channel.send(embed).catch(console.error);
 			return process.exit();
