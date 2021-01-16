@@ -12,7 +12,7 @@ module.exports = {
 	requireMention: false,
 	wip: false,
 	cooldown: 10,
-	permissions: 'ADMINISTRATOR',
+	permissions: 'SEND_MESSAGES',
 	category: 'moderation',
 	execute(message) {
 		message.delete({ timeout: 1000 }).catch(console.error);
