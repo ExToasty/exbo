@@ -8,7 +8,7 @@ module.exports = {
 	usage: `${prefix}8ball <question>`,
 	// aliases: ['']
 	guildOnly: false,
-	minArgs: true,
+	minArgs: 1,
 	selfExecute: false,
 	requireMention: false,
 	wip: false,
