@@ -15,6 +15,35 @@ const { prefix, version, embedColor } = require('./config.json');
 const pathToFfmpeg = require('ffmpeg-static');
 
 const client = new Discord.Client();
+
+// eslint-disable-next-line no-unused-vars
+const { Users, CurrencyShop } = require('./dbObjects');
+// eslint-disable-next-line no-unused-vars
+const { Op } = require('sequelize');
+const currency = new Discord.Collection();
+
+Reflect.defineProperty(currency, 'add', {
+	/* eslint-disable-next-line func-name-matching */
+	value: async function add(id, amount) {
+		const user = currency.get(id);
+		if (user) {
+			user.balance += Number(amount);
+			return user.save();
+		}
+		const newUser = await Users.create({ user_id: id, balance: amount });
+		currency.set(id, newUser);
+		return newUser;
+	},
+});
+
+Reflect.defineProperty(currency, 'getBalance', {
+	/* eslint-disable-next-line func-name-matching */
+	value: function getBalance(id) {
+		const user = currency.get(id);
+		return user ? user.balance : 0;
+	},
+});
+
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -50,10 +79,12 @@ const Tags = sequelize.define('tags', {
 const date = Date.now();
 const time = new Date(date);
 
-client.on('ready', async () => {
+client.once('ready', async () => {
 	console.log(`ExBo is now up!`);
 	Tags.sync();
 	client.user.setActivity(`ExBo v${version}`, { type: 'PLAYING' });
+	const storedBalances = await Users.findAll();
+	storedBalances.forEach(b => currency.set(b.user_id, b));
 });
 
 client.on('guildCreate', async guild => {
@@ -69,6 +100,8 @@ client.on('guildMemberAdd', async member => {
 });
 
 client.on('message', async message => {
+	currency.add(message.author.id, 1);
+
 	const embed = new Discord.MessageEmbed().setColor(embedColor);
 	const oop = [
 		'object oriented programming',
@@ -119,7 +152,7 @@ client.on('message', async message => {
 		return message.channel.send(embed);
 	}
 
-	if (command.minArgs && args.length != command.minArgs) {
+	if (command.minArgs && !args.length === command.minArgs) {
 		embed
 			.setTitle('__Missing Arguments__')
 			.setDescription(`\`A minimum of atleast ${command.minArgs} arguement(s) are required.\``);
@@ -194,7 +227,7 @@ client.on('message', async message => {
 			.setTitle('__Error Executing Command__')
 			.setDescription(`An error has caused the command to fail execution. We will look into this momentarily`);
 
-		command.execute(message, args);
+		command.execute(message, args, Users, currency);
 
 		console.log(`${message.member.user.tag} has executed '${prefix}${command.name}' with the following arguments: '${args.join(' ')}' at ${time} in ${message.guild.name}`);
 	}
