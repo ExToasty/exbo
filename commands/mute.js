@@ -17,7 +17,7 @@ module.exports = {
 		const member = message.mentions.members.first();
 		const embed = new Discord.MessageEmbed()
 			.setTitle('Mute Succesful')
-			.setDescription(`${member} has been muted`)
+			.setDescription(`**__\`${member}\`**__\` has been muted.\``)
 			.setColor(embedColor);
 
 		if (typeof role === undefined) {
