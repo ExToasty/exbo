@@ -222,6 +222,7 @@ client.on('message', async message => {
 			.setDescription('`This command isn\'t functional at the moment, please be patient.`');
 	}
 
+
 	try {
 		embed
 			.setTitle('__Error Executing Command__')
