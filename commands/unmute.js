@@ -22,7 +22,7 @@ module.exports = {
 		if (!target.roles.cache.some(role => role.name === 'muted')) {
 			embed
 				.setTitle('__Unmute Unsuccesful__')
-				.setDescription(`__**\`${target}\`**__\` is not muted\``);
+				.setDescription(`__**\`${target.tag}\`**__\` is not muted\``);
 
 			return message.channel.send(embed);
 		}
@@ -30,14 +30,14 @@ module.exports = {
 		if (!reason) {
 			embed
 				.setTitle('__Unmute Succesful__')
-				.setDescription(`__**\`${target}\`**__\` has been unmuted.\``);
+				.setDescription(`__**\`${target.tag}\`**__\` has been unmuted.\``);
 
 			return target.roles.remove(mutedRole).then(message.channel.send(embed));
 		}
 
 		embed
 			.setTitle('Unmute Succesful')
-			.setDescription(`__**\`${target}\`**__\` has been unmuted for ${reason}\``);
+			.setDescription(`__**\`${target.tag}\`**__\` has been unmuted for ${reason}\``);
 
 		return target.roles.remove(mutedRole, reason).then(message.channel.send(embed));
 	},
