@@ -18,7 +18,7 @@ module.exports = {
 			data: {
 				name: '.',
 				permissions:[{
-					'ADMINISTRATOR': true,
+					'ADMIN': true,
 				}],
 			},
 		});
