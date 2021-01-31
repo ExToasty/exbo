@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => res.send('Uh, why are you here and how did you find this? Anyways, thats besides the point, have you joined our official Discord server? You haven\'t? Well thats no good! Here is the link: https://discord.gg/U6eePgu and we can\'t forget about the bot, now can we? Here is the invite link for the bot: https://discord.com/oauth2/authorize?client_id=759836239791915028&scope=bot&permissions=8 Enjoy your stay!'));
+app.get('/', (req, res) => res.send('Uh, why are you here and how did you find this? Anyways, that\'s besides the point, have you joined our official Discord server? You haven\'t? Well that\'s no good! Here is the link: https://discord.gg/U6eePgu and we can\'t forget about the bot, now can we? Here is the invite link for the bot: https://discord.com/oauth2/authorize?client_id=759836239791915028&scope=bot&permissions=8 Enjoy your stay!'));
 
 app.listen(port, () => console.log(`ExBo's website is up on port ${port}`));
 
@@ -81,8 +81,8 @@ const time = new Date(date);
 
 client.once('ready', async () => {
 	console.log(`ExBo is now up!`);
-	Tags.sync();
-	client.user.setActivity(`ExBo v${version}`, { type: 'PLAYING' });
+	await Tags.sync();
+	await client.user.setActivity(`ExBo v${version}`, { type: 'PLAYING' });
 	const storedBalances = await Users.findAll();
 	storedBalances.forEach(b => currency.set(b.user_id, b));
 });
@@ -108,8 +108,8 @@ client.on('message', async message => {
 		'oop',
 	];
 
-	if (message.content.toLowerCase() === oop) {
-		message.channel.send('sksksksksksksksksk');
+	if (message.content.toLowerCase() === oop[1] && message.content.toLowerCase() === oop[2]) {
+		await message.channel.send('sksksksksksksksksk');
 	}
 	if (message.content.toLowerCase() === 'thx') return message.channel.send('ur welcome bb');
 	if (message.author.id === '632690114082111519') return message.channel.send('no');
@@ -137,7 +137,7 @@ client.on('message', async message => {
 			.setDescription(`\`Check if there is a spelling error and retry the command.\``)
 			.setFooter('Run `>help` if you want to get a list of commands.');
 
-		return message.channel.send(embed) && console.error();
+		return await message.channel.send(embed) && console.error();
 	}
 
 	if (command.guildOnly && command.guildOnly === true && message.channel.type === 'dm') {
@@ -155,7 +155,7 @@ client.on('message', async message => {
 	if (command.minArgs && !args.length === command.minArgs) {
 		embed
 			.setTitle('__Missing Arguments__')
-			.setDescription(`\`A minimum of atleast ${command.minArgs} arguement(s) are required.\``);
+			.setDescription(`\`A minimum of at least ${command.minArgs} argument(s) are required.\``);
 
 		if (command.usage) embed.addField('__Usage__', `\`${command.usage}\``);
 
@@ -177,14 +177,14 @@ client.on('message', async message => {
 			}
 			catch (error) {
 				console.error(error);
-				message.channel.send();
+				await message.channel.send('An unexpected error has occurred.');
 			}
 			return;
 		}
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`You still have ${timeLeft.toFixed(1)} second(s) left until the cooldown expires`);
+			return message.reply(`You still have ${timeLeft.toFixed(1)} second(s) left until the cool down expires`);
 		}
 	}
 
@@ -201,7 +201,7 @@ client.on('message', async message => {
 
 	if (command.requireId && command.requireId === true) {
 		embed
-			.setTitle('__Invalid Arguement__')
+			.setTitle('__Invalid Argument__')
 			.setDescription('`IDs are required for this command.`');
 
 		return message.channel.send(embed);
@@ -209,7 +209,7 @@ client.on('message', async message => {
 
 	if (command.requireMention && command.requireMention === true && !message.mentions.users.first()) {
 		embed
-			.setTitle('__Invalid Arguement__')
+			.setTitle('__Invalid Argument__')
 			.setDescription('`You need to mention a user in the server.`');
 
 		if (command.usage) embed.addField('__Usage__', `\`${command.usage}\``);
@@ -243,8 +243,8 @@ client.on('message', async message => {
 			{ name: '__Troubleshooting__', value: '`Try reloading the command. If that doesn\'t work, report the issue in <!#759847171930849282>`' },
 		);
 
-		message.channel.send(embed);
+	await message.channel.send(embed);
 	}
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN).then(console.log('ExBo is now logged into Discord.'));
