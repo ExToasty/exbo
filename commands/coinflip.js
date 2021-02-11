@@ -17,6 +17,6 @@ module.exports = {
 		const responses = ['heads', 'tails'];
 		const response = responses[Math.floor(Math.random() * responses.length)];
 
-		message.channel.send(`The coin landed on ${response}`).catch(console.error());
+		message.channel.send(`The coin landed on ${response}.`).catch(console.error());
 	},
 };
