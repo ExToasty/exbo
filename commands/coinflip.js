@@ -14,6 +14,8 @@ module.exports = {
 	permissions: ['SEND_MESSAGES'],
 	category: 'fun',
 	execute(message) {
+		message.delete({ timeout: 1000 });
+
 		const responses = ['heads', 'tails'];
 		const response = responses[Math.floor(Math.random() * responses.length)];
 
