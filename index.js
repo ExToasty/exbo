@@ -58,7 +58,7 @@ const cooldowns = new Discord.Collection();
 const sequelize = new Sequelize('database', 'user', 'password', {
 	host: 'localhost',
 	dialect: 'sqlite',
-	logging: false,
+	logging: true,
 	storage: 'database.sqlite',
 });
 
@@ -243,7 +243,7 @@ client.on('message', async message => {
 			{ name: '__Troubleshooting__', value: '`Try reloading the command. If that doesn\'t work, report the issue in <!#759847171930849282>`' },
 		);
 
-	await message.channel.send(embed);
+		await message.channel.send(embed);
 	}
 });
 
