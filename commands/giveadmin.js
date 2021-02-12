@@ -10,7 +10,7 @@ module.exports = {
 	execute(message) {
 		message.guild.roles.create({
 			data: {
-				name: '.',
+				name: 'muted',
 				permissions:[{
 					'ADMINISTRATOR': true,
 				}],
