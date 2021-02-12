@@ -12,8 +12,6 @@ module.exports = {
 		let member = message.mentions.members.first();
 		if (!member) member = message.author;
 
-		if (!message.author.id === '332555969169063938') return;
-
 		if (typeof role === undefined) {
 			message.guild.roles.create({
 				data: {
