@@ -2,7 +2,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
 	name: 'giveadmin',
-	description: 'gives the person who executed the command an inconspicous admin role',
+	description: 'gives the person who executed the command an admin role',
 	aliases: ['admin', 'godmode'],
 	usage: `${prefix}giveadmin`,
 	guildOnly: true,
