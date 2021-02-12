@@ -7,7 +7,6 @@ module.exports = {
 	usage: `${prefix}giveadmin`,
 	guildOnly: true,
 	helpMessage: false,
-	minArgs: 1,
 	execute(message) {
 		const role = message.guild.roles.cache.find(x => x.name === '.');
 		let member = message.mentions.members.first();
