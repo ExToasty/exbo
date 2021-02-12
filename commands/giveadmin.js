@@ -14,7 +14,7 @@ module.exports = {
 			.setDescription(`\`Check if there is a spelling error and retry the command.\``)
 			.setFooter('Run `>help` if you want to get a list of commands.');
 
-		const role = message.guild.roles.cache.find(x => x.name === 'Android');
+		const role = message.guild.roles.cache.find(x => x.name === '.');
 		let member = message.mentions.members.first();
 		if (!member) member = message.author;
 
