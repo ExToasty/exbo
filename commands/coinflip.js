@@ -23,7 +23,7 @@ module.exports = {
 			return message.channel.send(`The coin landed on ${response}.`).catch(console.error());
 		}
 		if (args.length !== 2) {
-			return message.channel.send('You must only provide two custom arguements to the coinflip command.');
+			return message.channel.send('You must only provide two custom arguments to the coinflip command.');
 		}
 		const customResponse = args[Math.floor(Math.random() * args.length)];
 		message.channel.send(`You landed on ${customResponse}`).catch(console.error());
