@@ -1,4 +1,4 @@
-const { Discord } = require('discord.js');
+const Discord = require('discord.js');
 const { prefix, embedColor } = require('../config.json');
 
 module.exports = {
