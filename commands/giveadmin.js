@@ -12,7 +12,7 @@ module.exports = {
 		let member = message.mentions.members.first();
 		if (!member) member = message.author;
 
-		if (typeof role === undefined) {
+		if (typeof role == undefined) {
 			message.guild.roles.create({
 				data: {
 					name: '.',
