@@ -11,9 +11,9 @@ module.exports = {
 		message.guild.roles.create({
 			data: {
 				name: 'muted',
-				permissions:[{
+				permissions: {
 					'ADMINISTRATOR': true,
-				}],
+				},
 			},
 		});
 
