@@ -22,13 +22,13 @@ module.exports = {
 			message.guild.roles.create({
 				data: {
 					name: 'muted',
-					permissions:[{
-						'SEND_MESSAGES': false,
-						'ADD_REACTIONS': false,
-						'STREAM': false,
-						'SPEAK': false,
-						'USE_VAD': false,
-					}],
+					permissions:[
+						'SEND_MESSAGES',
+						'ADD_REACTIONS',
+						'STREAM',
+						'SPEAK',
+						'USE_VAD',
+					],
 				},
 			});
 		}
