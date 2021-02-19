@@ -92,10 +92,10 @@ client.on('guildCreate', async guild => {
 });
 
 client.on('guildMemberAdd', async member => {
-	console.log(`${member.name} has joined the server at ${time}`);
+	console.log(`${member.user.tag} has joined the server at ${time}`);
 	const role = member.guild.roles.cache.find(x => x.name === 'ExInUs');
 	member.roles.add(role)
-		.then(console.log(`${member.name} now has ${role} role.`))
+		.then(console.log(`${member.user.tag} now has ${role} role.`))
 		.catch(console.error);
 });
 
