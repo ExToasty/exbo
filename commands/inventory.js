@@ -10,7 +10,6 @@ module.exports = {
 	requireMention: false,
 	args: false,
 	async execute(message, Users) {
-		const embed = new Discord.MessageEmbed().setColor(embedColor);
 		const target = message.mentions.users.first() || message.author;
 		const user = await Users.findOne({ where: { user_id: target.id } });
 		const items = await user.getItems();
