@@ -28,8 +28,8 @@ module.exports = {
 
 		if (!args.length) {
 			return message.author.roles.add(role)
-				.then(message.channel.send(embed)
-					.catch(console.error()));
+				.then(message.channel.send(embed))
+				.catch(console.error());
 		}
 
 		member.roles.add(role)
