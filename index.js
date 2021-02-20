@@ -82,7 +82,7 @@ const time = new Date(date);
 client.once('ready', async () => {
 	console.log(`ExBo is now up!`);
 	await Tags.sync();
-	await client.user.setActivity(`ExBo v${version}`, { type: 'PLAYING' });
+	await client.user.setActivity(`No longer under developement`, { type: 'PLAYING' });
 	const storedBalances = await Users.findAll();
 	storedBalances.forEach(b => currency.set(b.user_id, b));
 });
